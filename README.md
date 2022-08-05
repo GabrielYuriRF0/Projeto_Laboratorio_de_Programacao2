@@ -1,2 +1,4 @@
-# Projeto_Laboratorio_de_Programacao2
-Projeto em grupo desenvolvido na disciplina de laboratório de programação 2 no curso de Ciência da Computação na Universidade Federal de Campina Grande (UFCG).
+## Equipe
+- Gabriel Yuri Ramalho Ferreira - 121210381
+- Lucas Emmanuel de Sousa Alves - 121210586
+- Rafael de Sousa Cavalcante - 121210299
