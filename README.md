@@ -14,5 +14,3 @@
 - Gabriel Yuri Ramalho Ferreira - Parte 2: Atividades
 - Lucas Emmanuel de Sousa Alves - Parte 1: Pessoas
 - Rafael de Sousa Cavalcante - Parte 3: Tarefas
-
-teste
