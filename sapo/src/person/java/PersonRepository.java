@@ -21,5 +21,8 @@ public class PersonRepository {
         this.people.get(cpf).addCommentary(commentary);
 
     }
+    public boolean checkRegistration(String cpf){
+        return people.containsKey(cpf);
+    }
 
 }

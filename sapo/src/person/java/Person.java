@@ -11,6 +11,10 @@ public class Person{
         this.name = name;
         this.skills = skills;
     }
+    public Person(String cpf, String name){
+        this.cpf = cpf;
+        this.name = name;
+    }
 
     public void setName(String newName){
         this.name = newName;
