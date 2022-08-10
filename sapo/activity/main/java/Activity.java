@@ -3,20 +3,24 @@ public class Activity {
     private String description;
     private String CPF;
 
-    public String getID() {
-        return ID;
-    }
-
     private String ID;
     private int status;
+    private String responsable;
 
 
-    public Activity(String nome, String descricao, String CPF){
-        this.name = nome;
-        this.description = descricao;
+    public Activity(String name, String description, String CPF){
+        this.name = name;
+        this.description = description;
         this.CPF = CPF;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getID() {
+        return ID;
+    }
     public int getStatus() {
         return status;
     }
@@ -45,5 +49,12 @@ public class Activity {
         this.ID = ID;
     }
 
-
+    @Override
+    public String toString() {
+        return  ID + ": " + name + "\n" +
+                "Résponsável: " + responsable + " - " + CPF + "\n" +
+                "===\n" +
+                description + "\n" +
+                "===\n";
+    }
 }
