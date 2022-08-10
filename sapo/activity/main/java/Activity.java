@@ -1,9 +1,12 @@
-package Activities;
-
 public class Activity {
     private String name;
     private String description;
     private String CPF;
+
+    public String getID() {
+        return ID;
+    }
+
     private String ID;
     private int status;
 
