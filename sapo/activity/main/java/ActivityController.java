@@ -18,7 +18,7 @@ public class ActivityController {
     }
 
     public String exibirAtividade(String ID){
-        return "";
+        return this.as.exibirAtividade(ID);
     }
 
     public void alterarDescricaoAtividade(String ID, String descricao){

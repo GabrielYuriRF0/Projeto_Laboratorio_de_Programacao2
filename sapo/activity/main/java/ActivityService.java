@@ -29,4 +29,8 @@ public class ActivityService {
         var activity = this.ar.recoverActivity(ID);
         activity.setCPF(CPF);
     }
+    public String exibirAtividade(String ID){
+        var activity = this.ar.recoverActivity(ID);
+        return activity.toString();
+    }
 }
