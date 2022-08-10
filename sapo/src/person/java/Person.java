@@ -16,6 +16,10 @@ public class Person{
         this.name = newName;
     }
 
+    public String getCpf(){
+        return this.cpf;
+    }
+
     public void setSkills(String[] newSkills){
         this.skills = newSkills;
     }
