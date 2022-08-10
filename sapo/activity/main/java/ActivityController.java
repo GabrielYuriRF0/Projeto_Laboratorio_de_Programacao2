@@ -1,31 +1,33 @@
 public class ActivityController {
     private ActivityService as;
+    private ActivityValidator validator;
 
-    public String cadastrarAtividade(String nome, String descricao, String CPF){
-        return this.as.adicionaAtividade(new Activity(nome, descricao, CPF));
+    public String addActivity(String name, String description, String CPF){
+        this.validator.validator(name, description, CPF);
+        return this.as.addActivity(new Activity(name, description, CPF));
     }
 
-    public void encerrarAtividade(String ID){
-        this.as.encerrarAtividade(ID);
+    public void endActivity(String ID){
+        this.as.endActivity(ID);
     }
 
-    public void desabilitarAtividade(String ID){
-        this.as.desabilitarAtividade(ID);
+    public void disableActivity(String ID){
+        this.as.disableActivity(ID);
     }
 
-    public void reabrirAtividade(String ID){
-        this.as.reabrirAtividade(ID);
+    public void reopenActivity(String ID){
+        this.as.reopenActivity(ID);
     }
 
-    public String exibirAtividade(String ID){
-        return this.as.exibirAtividade(ID);
+    public String displayActivity(String ID){
+        return this.as.displayActivity(ID);
     }
 
-    public void alterarDescricaoAtividade(String ID, String descricao){
-        this.as.alterarDescricaoAtividade(ID, descricao);
+    public void changeActivityDescription(String ID, String descricao){
+        this.as.changeActivityDescription(ID, descricao);
     }
 
-    public void alterarResponsavelAtividade(String ID, String CPF){
-        this.as.alterarResponsavelAtividade(ID, CPF);
+    public void changeActivityResponsable(String ID, String CPF){
+        this.as.changeActivityResponsable(ID, CPF);
     }
 }

@@ -8,9 +8,10 @@ public class ActivityRepository {
     public ActivityRepository(){
          this.activities = new ArrayList<>();
     }
-    public void add(Activity a){
+    public void addActivity(Activity a){
        this.activities.add(a);
-        a.setID(generateID(a));
+       a.setID(generateID(a));
+       a.setStatus(0);
     }
 
     public String generateID(Activity a){
