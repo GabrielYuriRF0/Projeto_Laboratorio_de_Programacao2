@@ -7,27 +7,27 @@ public class ActivityController {
         return this.as.addActivity(new Activity(name, description, CPF));
     }
 
-    public void endActivity(String ID){
-        this.as.endActivity(ID);
+    public void endActivity(String id){
+        this.as.endActivity(id);
     }
 
-    public void disableActivity(String ID){
-        this.as.disableActivity(ID);
+    public void disableActivity(String id){
+        this.as.disableActivity(id);
     }
 
-    public void reopenActivity(String ID){
-        this.as.reopenActivity(ID);
+    public void reopenActivity(String id){
+        this.as.reopenActivity(id);
     }
 
-    public String displayActivity(String ID){
-        return this.as.displayActivity(ID);
+    public String displayActivity(String id){
+        return this.as.displayActivity(id);
     }
 
-    public void changeActivityDescription(String ID, String descricao){
-        this.as.changeActivityDescription(ID, descricao);
+    public void changeActivityDescription(String id, String descricao){
+        this.as.changeActivityDescription(id, descricao);
     }
 
-    public void changeActivityResponsable(String ID, String CPF){
-        this.as.changeActivityResponsable(ID, CPF);
+    public void changeActivityResponsable(String id, String CPF){
+        this.as.changeActivityResponsable(id, CPF);
     }
 }

@@ -1,0 +1,59 @@
+Activity 
+composes ActivityController
+composes ActivityValidator
+---
+- name: str
+- description: str
+- CPF: str
+- ID: str
+- status: int
+- responsable: str
+---
++ Activity(name: str, description: str, CPF: str)
++ toString(): str
+---
+
+ActivityRepository
+---
+- activities: ArrayList<Activity> 
+---
++ ActivityRepository()
++ addActivity(a: Activity): void
++ generateID(a: Activity): str
++ recoverActivity(id: String): Activity
+---
+
+ActivityController
+composes ActivityService
+---
+- as: ActivityService 
+- validator: ActivityValidator
+---
++ addActivity(name: str, description: str, cpf: str): str
++ endActivity(id: str): void
++ disableActivity(id: str): void
++ reopenActivity(id: str): void
++ displayActivity(id: str): str
++ changeActivityDescription(id: str, description: str): void
++ changeActivityResponsable(id: str, cpf: str): void
+---
+
+ActivityService
+composes ActivityRepository
+---
+- ar: ActivityRepository
+---
++ addActivity(a: Activity): str
++ endActivity(id: str): void
++ disableActivity(id: str): void
++ reopenActivity(id: str): void
++ displayActivity(id: str): str
++ changeActivityDescription(id: str, description: str): void
++ changeActivityResponsable(id: str, cpf: str): void
+---
+
+ActivityValidator
+---
+---
++ validator(name: str, description: str, CPF: str): void
+---

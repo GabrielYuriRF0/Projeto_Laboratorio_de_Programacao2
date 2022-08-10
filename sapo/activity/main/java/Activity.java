@@ -2,7 +2,7 @@ public class Activity {
     private String name;
     private String description;
     private String CPF;
-    private String ID;
+    private String id;
     private int status;
     private String responsable;
 
@@ -18,7 +18,7 @@ public class Activity {
     }
 
     public String getID() {
-        return ID;
+        return id;
     }
     public int getStatus() {
         return status;
@@ -45,12 +45,12 @@ public class Activity {
     }
 
     public void setID(String ID) {
-        this.ID = ID;
+        this.id = ID;
     }
 
     @Override
     public String toString() {
-        return  ID + ": " + name + "\n" +
+        return  id + ": " + name + "\n" +
                 "Résponsável: " + responsable + " - " + CPF + "\n" +
                 "===\n" +
                 description + "\n" +

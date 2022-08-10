@@ -9,8 +9,8 @@ public class ActivityService {
             throw new IllegalArgumentException("Não é possivel adicionar uma nova atividade com a atividade indisponível");
         }
     }
-    public void endActivity(String ID){
-        var activity = this.ar.recoverActivity(ID);
+    public void endActivity(String id){
+        var activity = this.ar.recoverActivity(id);
         if(activity.getStatus() == 0){
             activity.setStatus(2);
         }else{
@@ -18,8 +18,8 @@ public class ActivityService {
         }
     }
 
-    public void disableActivity(String ID){
-        var activity = this.ar.recoverActivity(ID);
+    public void disableActivity(String id){
+        var activity = this.ar.recoverActivity(id);
         if(activity.getStatus() == 0){
             activity.setStatus(1);
         }else{
@@ -27,25 +27,25 @@ public class ActivityService {
         }
     }
 
-    public void reopenActivity(String ID){
-        var activity = this.ar.recoverActivity(ID);
+    public void reopenActivity(String id){
+        var activity = this.ar.recoverActivity(id);
         if(activity.getStatus() != 0){
             activity.setStatus(0);
         }else{
             throw new IllegalArgumentException("Não é possivel reabrir uma atividade já aberta");
         }
     }
-    public String displayActivity(String ID){
-        var activity = this.ar.recoverActivity(ID);
+    public String displayActivity(String id){
+        var activity = this.ar.recoverActivity(id);
         return activity.toString();
     }
-    public void changeActivityDescription(String ID, String descricao){
-        var activity = this.ar.recoverActivity(ID);
+    public void changeActivityDescription(String id, String descricao){
+        var activity = this.ar.recoverActivity(id);
         activity.setDescription(descricao);
     }
 
-    public void changeActivityResponsable(String ID, String CPF){
-        var activity = this.ar.recoverActivity(ID);
+    public void changeActivityResponsable(String id, String CPF){
+        var activity = this.ar.recoverActivity(id);
         activity.setCPF(CPF);
     }
 
