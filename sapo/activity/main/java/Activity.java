@@ -2,7 +2,6 @@ public class Activity {
     private String name;
     private String description;
     private String CPF;
-
     private String ID;
     private int status;
     private String responsable;

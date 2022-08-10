@@ -47,4 +47,14 @@ public class ActivityRepository {
 
         return id.toString();
     }
+
+    public Activity recoverActivity(String ID){
+        Activity activity = null;
+        for(Activity a: activities){
+            if(a.getID().equals(ID)){
+                 activity = a;
+            }
+        }
+        return activity;
+    }
 }

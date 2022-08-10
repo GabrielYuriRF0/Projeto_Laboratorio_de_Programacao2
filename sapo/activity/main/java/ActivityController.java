@@ -22,10 +22,10 @@ public class ActivityController {
     }
 
     public void alterarDescricaoAtividade(String ID, String descricao){
-
+        this.as.alterarDescricaoAtividade(ID, descricao);
     }
 
     public void alterarResponsavelAtividade(String ID, String CPF){
-
+        this.as.alterarResponsavelAtividade(ID, CPF);
     }
 }
