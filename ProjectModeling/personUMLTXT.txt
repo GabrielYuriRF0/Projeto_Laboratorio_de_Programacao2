@@ -1,0 +1,55 @@
+Person
+association Commentary
+---
+- cpf:str
+- name:str
+- skills:str[]
+- Comments:Array<Commentary>
+---
++ Person(cpf:str, name:str, skills:str[])
++ toString():str
++ setName(newName:str):void
++ setSkills(newSkils:str[]):void
++ addCommentary(commentary:Commentary):void
++ showComments():str
+---
+
+PersonRepository
+composes Person
+---
+- people: Map<str,Person>
+---
++ PersonRepository()
++ registerPerson(person:Person):void
++ searchPerson(cpf:str):Person
++ deletePerson(cpf:str):void
++ addPersonCommentary(cpf:str ,commentary: Commentary):void
+---
+
+PersonController
+composes PersonRepository
+---
+- pr:PersonRepository
+---
++ registerPerson(cpf: str, name: str, skills: str[]): void
++ showPerson(cpf:str):str
++ setPersonName(cpf:str, newName:str):void
++ setPersonSkills(cpf:str, newSkills:str[]):void
++ deletePerson(cpf:str):void
++ addPersonCommentary(cpf:str, commentary:str, author:str):void
++ showPersonComments(cpf:str):str
+---
+
+
+
+Commentary
+---
+- author:str
+- description:str
+- currentDate:str
+---
++ Commentary(author:str, description:str)
+---
+
+
+
