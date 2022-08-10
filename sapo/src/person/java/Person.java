@@ -24,10 +24,20 @@ public class Person{
         this.comments.add(commentary);
     }
 
-    //FIXME implements toString after
     @Override
     public String toString(){
-        return "";
+        return this.name + " - " + this.cpf;
+    }
+
+    public String showComments(){
+        String comments = new String();
+
+        for(Commentary commentary: this.comments){
+            comments += commentary.toString() + "\n";
+        }
+
+        return comments;
+
     }
 
 }
