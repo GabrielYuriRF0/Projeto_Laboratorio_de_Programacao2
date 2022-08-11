@@ -21,7 +21,4 @@ public class PersonValidator extends Validator {
             return false;
         }
     }
-
-
-
 }
