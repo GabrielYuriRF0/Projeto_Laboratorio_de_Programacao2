@@ -7,12 +7,19 @@ public class PersonValidator extends Validator {
         return true;
     }
 
+    public boolean skillsValidator(String[] skills){
+        return skills != null;
+    }
+
     public boolean cpfValidator(String cpf){
-        super.validateAttribute(cpf);
         CPFValidator cpfValidator = new CPFValidator();
 
-
-        return true;
+        try{ cpfValidator.assertValid(cpf);
+            return true;
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
     }
 
 
