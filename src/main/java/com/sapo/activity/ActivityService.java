@@ -49,6 +49,7 @@ public class ActivityService {
     public void changeActivityResponsable(String id, String CPF){
         var activity = this.ar.recoverActivity(id);
         activity.setCPF(CPF);
+        activity.setResponsable(CPF);
     }
 
 

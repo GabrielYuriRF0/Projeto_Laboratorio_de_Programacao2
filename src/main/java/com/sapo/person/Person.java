@@ -6,6 +6,7 @@ import java.util.TreeSet;
 
 public class Person{
     private String cpf;
+
     private String name;
     private String[] skills;
     private ArrayList<Commentary> comments = new ArrayList<Commentary>() ;
@@ -18,6 +19,9 @@ public class Person{
     public Person(String cpf, String name){
         this.cpf = cpf;
         this.name = name;
+    }
+    public String getName() {
+        return name;
     }
 
     public void setName(String newName){
