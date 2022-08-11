@@ -1,3 +1,5 @@
+package validators;
+
 import br.com.caelum.stella.validation.CPFValidator;
 
 public class PersonValidator extends Validator {

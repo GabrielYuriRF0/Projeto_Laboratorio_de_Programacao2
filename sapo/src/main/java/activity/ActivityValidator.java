@@ -1,3 +1,5 @@
+package activity;
+
 import java.util.Objects;
 
 public class ActivityValidator {

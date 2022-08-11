@@ -1,6 +1,6 @@
-Activity 
-composes ActivityController
-composes ActivityValidator
+activity.Activity
+composes activity.ActivityController
+composes activity.ActivityValidator
 ---
 - name: str
 - description: str
@@ -9,25 +9,25 @@ composes ActivityValidator
 - status: int
 - responsable: str
 ---
-+ Activity(name: str, description: str, CPF: str)
++ activity.Activity(name: str, description: str, CPF: str)
 + toString(): str
 ---
 
-ActivityRepository
+activity.ActivityRepository
 ---
-- activities: ArrayList<Activity> 
+- activities: ArrayList<activity.Activity>
 ---
-+ ActivityRepository()
-+ addActivity(a: Activity): void
-+ generateID(a: Activity): str
-+ recoverActivity(id: String): Activity
++ activity.ActivityRepository()
++ addActivity(a: activity.Activity): void
++ generateID(a: activity.Activity): str
++ recoverActivity(id: String): activity.Activity
 ---
 
-ActivityController
-composes ActivityService
+activity.ActivityController
+composes activity.ActivityService
 ---
-- as: ActivityService 
-- validator: ActivityValidator
+- as: activity.ActivityService
+- validator: activity.ActivityValidator
 ---
 + addActivity(name: str, description: str, cpf: str): str
 + endActivity(id: str): void
@@ -38,12 +38,12 @@ composes ActivityService
 + changeActivityResponsable(id: str, cpf: str): void
 ---
 
-ActivityService
-composes ActivityRepository
+activity.ActivityService
+composes activity.ActivityRepository
 ---
-- ar: ActivityRepository
+- ar: activity.ActivityRepository
 ---
-+ addActivity(a: Activity): str
++ addActivity(a: activity.Activity): str
 + endActivity(id: str): void
 + disableActivity(id: str): void
 + reopenActivity(id: str): void
@@ -52,7 +52,7 @@ composes ActivityRepository
 + changeActivityResponsable(id: str, cpf: str): void
 ---
 
-ActivityValidator
+activity.ActivityValidator
 ---
 ---
 + validator(name: str, description: str, CPF: str): void

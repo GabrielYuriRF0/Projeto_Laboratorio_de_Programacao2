@@ -1,35 +1,35 @@
-Person
-association Commentary
+person.Person
+association person.Commentary
 ---
 - cpf:str
 - name:str
 - skills:str[]
-- Comments:Array<Commentary>
+- Comments:Array<person.Commentary>
 ---
-+ Person(cpf:str, name:str, skills:str[])
++ person.Person(cpf:str, name:str, skills:str[])
 + toString():str
 + setName(newName:str):void
 + setSkills(newSkils:str[]):void
-+ addCommentary(commentary:Commentary):void
++ addCommentary(commentary:person.Commentary):void
 + showComments():str
 ---
 
-PersonRepository
-composes Person
+person.PersonRepository
+composes person.Person
 ---
-- people: Map<str,Person>
+- people: Map<str,person.Person>
 ---
-+ PersonRepository()
-+ registerPerson(person:Person):void
-+ searchPerson(cpf:str):Person
++ person.PersonRepository()
++ registerPerson(person:person.Person):void
++ searchPerson(cpf:str):person.Person
 + deletePerson(cpf:str):void
-+ addPersonCommentary(cpf:str ,commentary: Commentary):void
++ addPersonCommentary(cpf:str ,commentary: person.Commentary):void
 ---
 
-PersonController
-composes PersonRepository
+person.PersonController
+composes person.PersonRepository
 ---
-- pr:PersonRepository
+- pr:person.PersonRepository
 ---
 + registerPerson(cpf: str, name: str, skills: str[]): void
 + showPerson(cpf:str):str
@@ -42,13 +42,13 @@ composes PersonRepository
 
 
 
-Commentary
+person.Commentary
 ---
 - author:str
 - description:str
 - currentDate:str
 ---
-+ Commentary(author:str, description:str)
++ person.Commentary(author:str, description:str)
 ---
 
 

@@ -1,3 +1,5 @@
+package activity;
+
 public class ActivityController {
     private ActivityService as;
     private ActivityValidator validator;

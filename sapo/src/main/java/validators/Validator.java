@@ -1,3 +1,5 @@
+package validators;
+
 abstract class Validator {
     private String attribute;
 

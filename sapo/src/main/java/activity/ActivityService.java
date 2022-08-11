@@ -1,3 +1,5 @@
+package activity;
+
 public class ActivityService {
     ActivityRepository ar;
 
