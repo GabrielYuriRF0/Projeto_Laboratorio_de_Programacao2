@@ -38,8 +38,6 @@ public class PersonController {
 
         pr.searchPerson(cpf).setName(newName);
 
-
-
     }
 
     public void setPersonSkills(String cpf, String[] newSkills){

@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 public class Person{
     private String cpf;
@@ -26,15 +28,32 @@ public class Person{
 
     public void setSkills(String[] newSkills){
         this.skills = newSkills;
+
     }
 
     public void addCommentary(Commentary commentary){
         this.comments.add(commentary);
     }
 
+    private String showSkills() {
+        SortedSet<String> skills = new TreeSet<String>();
+        String formatedSkills = new String();
+
+        for (String skill : this.skills) {
+            skills.add(skill);
+        }
+
+        for(String skill: skills){
+            formatedSkills += "-" + skill + "\n";
+        }
+        return formatedSkills;
+
+    }
+
+
     @Override
     public String toString(){
-        return this.name + " - " + this.cpf;
+        return this.name + " - " + this.cpf + "\n" + showSkills();
     }
 
     public String showComments(){
