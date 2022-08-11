@@ -1,4 +1,4 @@
-package activity;
+package com.sapo.activity;
 
 public class ActivityService {
     ActivityRepository ar;

@@ -1,4 +1,4 @@
-package validators;
+package com.sapo.validators;
 
 public class CommentaryValidator extends Validator {
 

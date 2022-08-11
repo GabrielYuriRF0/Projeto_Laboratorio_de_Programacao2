@@ -1,4 +1,4 @@
-package person;
+package com.sapo.person;
 
 import java.util.ArrayList;
 import java.util.SortedSet;

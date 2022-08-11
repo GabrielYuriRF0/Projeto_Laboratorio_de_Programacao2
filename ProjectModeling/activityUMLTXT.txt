@@ -1,6 +1,6 @@
-activity.Activity
-composes activity.ActivityController
-composes activity.ActivityValidator
+com.sapo.activity.Activity
+composes com.sapo.activity.ActivityController
+composes com.sapo.activity.ActivityValidator
 ---
 - name: str
 - description: str
@@ -9,25 +9,25 @@ composes activity.ActivityValidator
 - status: int
 - responsable: str
 ---
-+ activity.Activity(name: str, description: str, CPF: str)
++ com.sapo.activity.Activity(name: str, description: str, CPF: str)
 + toString(): str
 ---
 
-activity.ActivityRepository
+com.sapo.activity.ActivityRepository
 ---
-- activities: ArrayList<activity.Activity>
+- activities: ArrayList<com.sapo.activity.Activity>
 ---
-+ activity.ActivityRepository()
-+ addActivity(a: activity.Activity): void
-+ generateID(a: activity.Activity): str
-+ recoverActivity(id: String): activity.Activity
++ com.sapo.activity.ActivityRepository()
++ addActivity(a: com.sapo.activity.Activity): void
++ generateID(a: com.sapo.activity.Activity): str
++ recoverActivity(id: String): com.sapo.activity.Activity
 ---
 
-activity.ActivityController
-composes activity.ActivityService
+com.sapo.activity.ActivityController
+composes com.sapo.activity.ActivityService
 ---
-- as: activity.ActivityService
-- validator: activity.ActivityValidator
+- as: com.sapo.activity.ActivityService
+- validator: com.sapo.activity.ActivityValidator
 ---
 + addActivity(name: str, description: str, cpf: str): str
 + endActivity(id: str): void
@@ -38,12 +38,12 @@ composes activity.ActivityService
 + changeActivityResponsable(id: str, cpf: str): void
 ---
 
-activity.ActivityService
-composes activity.ActivityRepository
+com.sapo.activity.ActivityService
+composes com.sapo.activity.ActivityRepository
 ---
-- ar: activity.ActivityRepository
+- ar: com.sapo.activity.ActivityRepository
 ---
-+ addActivity(a: activity.Activity): str
++ addActivity(a: com.sapo.activity.Activity): str
 + endActivity(id: str): void
 + disableActivity(id: str): void
 + reopenActivity(id: str): void
@@ -52,7 +52,7 @@ composes activity.ActivityRepository
 + changeActivityResponsable(id: str, cpf: str): void
 ---
 
-activity.ActivityValidator
+com.sapo.activity.ActivityValidator
 ---
 ---
 + validator(name: str, description: str, CPF: str): void

@@ -1,7 +1,7 @@
-package person;
+package com.sapo.person;
 
-import validators.CommentaryValidator;
-import validators.PersonValidator;
+import com.sapo.validators.CommentaryValidator;
+import com.sapo.validators.PersonValidator;
 
 import java.util.NoSuchElementException;
 

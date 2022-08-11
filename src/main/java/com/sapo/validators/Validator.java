@@ -1,4 +1,4 @@
-package validators;
+package com.sapo.validators;
 
 abstract class Validator {
     private String attribute;

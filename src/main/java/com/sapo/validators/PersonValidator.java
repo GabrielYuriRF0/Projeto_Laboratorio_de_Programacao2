@@ -1,4 +1,4 @@
-package validators;
+package com.sapo.validators;
 
 import br.com.caelum.stella.validation.CPFValidator;
 

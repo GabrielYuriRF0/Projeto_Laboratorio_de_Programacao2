@@ -1,35 +1,35 @@
-person.Person
-association person.Commentary
+com.sapo.person.Person
+association com.sapo.person.Commentary
 ---
 - cpf:str
 - name:str
 - skills:str[]
-- Comments:Array<person.Commentary>
+- Comments:Array<com.sapo.person.Commentary>
 ---
-+ person.Person(cpf:str, name:str, skills:str[])
++ com.sapo.person.Person(cpf:str, name:str, skills:str[])
 + toString():str
 + setName(newName:str):void
 + setSkills(newSkils:str[]):void
-+ addCommentary(commentary:person.Commentary):void
++ addCommentary(commentary:com.sapo.person.Commentary):void
 + showComments():str
 ---
 
-person.PersonRepository
-composes person.Person
+com.sapo.person.PersonRepository
+composes com.sapo.person.Person
 ---
-- people: Map<str,person.Person>
+- people: Map<str,com.sapo.person.Person>
 ---
-+ person.PersonRepository()
-+ registerPerson(person:person.Person):void
-+ searchPerson(cpf:str):person.Person
++ com.sapo.person.PersonRepository()
++ registerPerson(com.sapo.person:com.sapo.person.Person):void
++ searchPerson(cpf:str):com.sapo.person.Person
 + deletePerson(cpf:str):void
-+ addPersonCommentary(cpf:str ,commentary: person.Commentary):void
++ addPersonCommentary(cpf:str ,commentary: com.sapo.person.Commentary):void
 ---
 
-person.PersonController
-composes person.PersonRepository
+com.sapo.person.PersonController
+composes com.sapo.person.PersonRepository
 ---
-- pr:person.PersonRepository
+- pr:com.sapo.person.PersonRepository
 ---
 + registerPerson(cpf: str, name: str, skills: str[]): void
 + showPerson(cpf:str):str
@@ -42,13 +42,13 @@ composes person.PersonRepository
 
 
 
-person.Commentary
+com.sapo.person.Commentary
 ---
 - author:str
 - description:str
 - currentDate:str
 ---
-+ person.Commentary(author:str, description:str)
++ com.sapo.person.Commentary(author:str, description:str)
 ---
 
 

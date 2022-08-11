@@ -1,6 +1,4 @@
-package activity;
-
-import java.util.Objects;
+package com.sapo.activity;
 
 public class ActivityValidator {
     public void validator(String name, String description, String CPF){
