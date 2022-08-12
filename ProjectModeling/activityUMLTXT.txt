@@ -1,6 +1,6 @@
 com.sapo.activity.Activity
 composes com.sapo.activity.ActivityController
-composes com.sapo.activity.ActivityValidator
+composes com.sapo.validators.ActivityValidator
 ---
 - name: str
 - description: str
@@ -27,7 +27,7 @@ com.sapo.activity.ActivityController
 composes com.sapo.activity.ActivityService
 ---
 - as: com.sapo.activity.ActivityService
-- validator: com.sapo.activity.ActivityValidator
+- validator: com.sapo.validators.ActivityValidator
 ---
 + addActivity(name: str, description: str, cpf: str): str
 + endActivity(id: str): void
@@ -52,7 +52,7 @@ composes com.sapo.activity.ActivityRepository
 + changeActivityResponsable(id: str, cpf: str): void
 ---
 
-com.sapo.activity.ActivityValidator
+com.sapo.validators.ActivityValidator
 ---
 ---
 + validator(name: str, description: str, CPF: str): void

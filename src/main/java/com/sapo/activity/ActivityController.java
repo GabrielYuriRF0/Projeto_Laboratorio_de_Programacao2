@@ -1,11 +1,18 @@
 package com.sapo.activity;
 
+import com.sapo.person.Person;
+import com.sapo.validators.ActivityValidator;
+import com.sapo.validators.PersonValidator;
+
 public class ActivityController {
     private ActivityService as;
-    private ActivityValidator validator;
+    private ActivityValidator av;
+    private PersonValidator pv;
 
     public String addActivity(String name, String description, String CPF){
-        this.validator.validator(name, description, CPF);
+        this.av.descriptionValidator(description);
+        this.pv.nameValidator(name);
+        this.pv.cpfValidator(CPF);
         return this.as.addActivity(new Activity(name, description, CPF));
     }
 
