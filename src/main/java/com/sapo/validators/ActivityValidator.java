@@ -5,3 +5,4 @@ public class ActivityValidator extends Validator{
         super.validateAttribute(description);
     }
 }
+
