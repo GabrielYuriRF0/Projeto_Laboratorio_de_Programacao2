@@ -17,7 +17,15 @@ public class PersonController {
             throw  new IllegalArgumentException("Invalid attribute");
         }
 
-        pr.registerPerson(new Person(cpf,name,skills));
+        else if (skills[0].isEmpty() || skills[0].isBlank()){
+            pr.registerPerson(new Person(cpf, name));
+        }
+
+        else{
+            pr.registerPerson(new Person(cpf,name,skills));
+
+        }
+
 
     }
 

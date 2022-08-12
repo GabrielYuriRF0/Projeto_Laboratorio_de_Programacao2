@@ -11,6 +11,7 @@ public class Person{
     private String[] skills;
     private ArrayList<Commentary> comments = new ArrayList<Commentary>() ;
 
+
     public Person(String cpf, String name, String[] skills){
         this.cpf = cpf;
         this.name = name;

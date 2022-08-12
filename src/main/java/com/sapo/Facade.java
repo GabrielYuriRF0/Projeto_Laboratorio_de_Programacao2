@@ -68,4 +68,7 @@ public class Facade {
     public void changeActivityResponsable(String id, String CPF){
         this.activityController.changeActivityResponsable(id, CPF);
     }
+
+    //todo implementar métodos de TaskController
+
 }
