@@ -41,11 +41,31 @@ public class Facade {
         return this.personController.showPersonComments(cpf);
     }
 
+    public String addActivity(String name, String description, String CPF){
+        return this.activityController.addActivity(name, description, CPF);
+    }
 
+    public void endActivity(String id){
+        this.activityController.endActivity(id);
+    }
 
+    public void disableActivity(String id){
+        this.activityController.disableActivity(id);
+    }
 
+    public void reopenActivity(String id){
+        this.activityController.reopenActivity(id);
+    }
 
+    public String displayActivity(String id){
+        return this.activityController.displayActivity(id);
+    }
 
+    public void changeActivityDescription(String id, String descricao){
+        this.activityController.changeActivityDescription(id, descricao);
+    }
 
-
+    public void changeActivityResponsable(String id, String CPF){
+        this.activityController.changeActivityResponsable(id, CPF);
+    }
 }
