@@ -9,6 +9,9 @@ public class PersonRepository {
     public PersonRepository(){
         this.people = new HashMap<>();
     }
+    public PersonRepository(Map<String, Person> people){
+        this.people = people;
+    }
 
     public void registerPerson(Person person){
         people.put(person.getCpf(),person);
@@ -29,6 +32,10 @@ public class PersonRepository {
     }
     public boolean checkRegistration(String cpf){
         return people.containsKey(cpf);
+    }
+
+    public Map<String, Person> getPeople(){
+        return this.getPeople();
     }
 
 }

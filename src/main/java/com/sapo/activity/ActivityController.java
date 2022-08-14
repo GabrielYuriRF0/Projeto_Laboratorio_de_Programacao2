@@ -1,35 +1,35 @@
 package com.sapo.activity;
 
 import com.sapo.person.Person;
+import com.sapo.person.PersonController;
 import com.sapo.person.PersonRepository;
 import com.sapo.person.PersonService;
 import com.sapo.validators.ActivityValidator;
 import com.sapo.validators.PersonValidator;
 
-import javax.accessibility.AccessibleAction;
+
 import java.util.NoSuchElementException;
 
 public class ActivityController {
-    private ActivityService as;
-    private ActivityValidator av;
-    private PersonValidator pv;
-    private  PersonRepository pr;
-    private ActivityRepository ar;
+    private final ActivityService as;
+    private final ActivityValidator av;
+    private final PersonValidator pv;
+    private final ActivityRepository ar;
 
-    private PersonService ps;
+    private final PersonRepository pr;
 
     public ActivityController(){
         as = new ActivityService();
         av = new ActivityValidator();
         pv = new PersonValidator();
-        pr = new PersonRepository();
         ar = new ActivityRepository();
-        ps = new PersonService();
+        pr = new PersonRepository();
+
     }
 
     public String addActivity(String name, String description, String cpf){
-        boolean checkRegistration = this.ps.checkRegistration(cpf);
-        if(checkRegistration){
+        boolean checkRegistration = this.pr.checkRegistration(cpf);
+        if(true){
             this.av.descriptionValidator(description);
             this.pv.nameValidator(name);
             this.pv.cpfValidator(cpf);
@@ -37,6 +37,7 @@ public class ActivityController {
         }
         else{
             throw new NoSuchElementException("Invalid ID");
+
         }
 
     }

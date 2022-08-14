@@ -1,11 +1,18 @@
 package com.sapo.person;
 
+import java.util.Map;
+
 public class PersonService {
-    private PersonRepository personRepository;
+    private final PersonRepository personRepository;
 
     public PersonService(){
         this.personRepository = new PersonRepository();
     }
+
+    public PersonService(Map<String, Person> peopple){
+        this.personRepository = new PersonRepository(peopple);
+    }
+
 
     public void registerPerson(Person person){
         this.personRepository.registerPerson(person);

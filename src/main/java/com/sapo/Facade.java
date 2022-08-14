@@ -7,7 +7,7 @@ import com.sapo.person.PersonController;
 public class Facade {
     private PersonController personController;
     private ActivityController activityController;
-    //todo Atribbute for TaskController
+    // todo Atribbute for TaskController
 
     public Facade(){
         this.personController = new PersonController();
