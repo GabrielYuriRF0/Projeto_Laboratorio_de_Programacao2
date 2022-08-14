@@ -3,14 +3,22 @@ package com.sapo.person;
 import com.sapo.validators.CommentaryValidator;
 import com.sapo.validators.PersonValidator;
 
+import javax.xml.validation.Validator;
 import java.util.NoSuchElementException;
 
 
 
 public class PersonController {
-    private final PersonRepository pr = new PersonRepository();
-    private final PersonValidator validator = new PersonValidator();
-    private final CommentaryValidator commentaryValidator = new CommentaryValidator();
+    private final PersonService personService;
+    private final PersonValidator validator;
+    private final CommentaryValidator commentaryValidator;
+
+    public PersonController(){
+        this.personService = new PersonService();
+        this.validator = new PersonValidator();
+        this.commentaryValidator = new CommentaryValidator();
+
+    }
 
     public void registerPerson(String cpf, String name, String[] skills){
         if(!(validator.nameValidator(name)) || !(validator.cpfValidator(cpf)) || !(validator.skillsValidator(skills))){
@@ -18,11 +26,12 @@ public class PersonController {
         }
 
         else if (skills[0].isEmpty() || skills[0].isBlank()){
-            pr.registerPerson(new Person(cpf, name));
+            this.personService.registerPerson(new Person(cpf, name));
         }
 
         else{
-            pr.registerPerson(new Person(cpf,name,skills));
+
+            this.personService.registerPerson(new Person(cpf,name,skills));
 
         }
 
@@ -34,12 +43,11 @@ public class PersonController {
             throw  new IllegalArgumentException("Invalid attribute");
 
         }
-        else if(pr.checkRegistration(cpf) == false){
+        else if(this.personService.checkRegistration(cpf) == false){
             throw new NoSuchElementException("Invalid ID");
         }
 
-        return pr.searchPerson(cpf).toString();
-
+        return this.personService.searchPerson(cpf).toString();
     }
 
     public void setPersonName(String cpf, String newName){
@@ -47,11 +55,11 @@ public class PersonController {
             throw  new IllegalArgumentException("Invalid attribute");
 
         }
-        else if(pr.checkRegistration(cpf) == false){
+        else if(this.personService.checkRegistration(cpf) == false){
             throw new NoSuchElementException("Invalid ID");
         }
 
-        pr.searchPerson(cpf).setName(newName);
+        this.personService.searchPerson(cpf).setName(newName);
 
     }
 
@@ -59,40 +67,40 @@ public class PersonController {
         if(validator.cpfValidator(cpf) == false || validator.skillsValidator(newSkills) == false){
             throw  new IllegalArgumentException("Invalid attribute");
         }
-        else if(pr.checkRegistration(cpf) == false){
+        else if(this.personService.checkRegistration(cpf) == false){
             throw new NoSuchElementException("Invalid ID");
         }
-        pr.searchPerson(cpf).setSkills(newSkills);
+        this.personService.searchPerson(cpf).setSkills(newSkills);
     }
 
     public void deletePerson(String cpf){
         if(validator.cpfValidator(cpf) == false){
             throw new IllegalArgumentException("Invalid attribute");
         }
-        else if(pr.checkRegistration(cpf) == false){
+        else if(this.personService.checkRegistration(cpf) == false){
             throw new NoSuchElementException("Invalid ID");
         }
-        pr.deletePerson(cpf);
+        this.personService.deletePerson(cpf);
     }
 
     public void addPersonCommentary(String cpf, String description, String author){
         if(validator.cpfValidator(cpf) == false || validator.cpfValidator(author) == false ||commentaryValidator.descriptionValidator(description) == false){
             throw new IllegalArgumentException("Invalid attribute");
         }
-        else if(pr.checkRegistration(cpf) == false || pr.checkRegistration(author) == false){
+        else if(this.personService.checkRegistration(cpf) == false || this.personService.checkRegistration(author) == false){
             throw new NoSuchElementException("Invalid ID");
         }
-        pr.searchPerson(cpf).addCommentary(new Commentary(description,author));
+        this.personService.searchPerson(cpf).addCommentary(new Commentary(description,author));
     }
 
     public String showPersonComments(String cpf){
         if(validator.cpfValidator(cpf) == false){
             throw new IllegalArgumentException("Invalid attribute");
         }
-        else if(pr.checkRegistration(cpf) == false){
+        else if(this.personService.checkRegistration(cpf) == false){
             throw new NoSuchElementException("Invalid ID");
         }
-        return pr.searchPerson(cpf).showComments();
+        return this.personService.searchPerson(cpf).showComments();
     }
 
 

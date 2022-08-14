@@ -4,7 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PersonRepository {
-    private Map<String,Person> people = new HashMap<String, Person>();
+    public Map<String,Person> people;
+
+    public PersonRepository(){
+        this.people = new HashMap<>();
+    }
 
     public void registerPerson(Person person){
         people.put(person.getCpf(),person);

@@ -62,4 +62,9 @@ public class ActivityRepository {
         }
         throw new NoSuchElementException("ID não existente no repositório");
     }
+
+    //Método para retornar uma atividade para ser usada nos testes:
+    public Activity getActivity(String id){
+        return activities.get(id);
+    }
 }

@@ -1,5 +1,6 @@
 package com.sapo;
 
+import com.sapo.activity.Activity;
 import com.sapo.activity.ActivityController;
 import com.sapo.person.PersonController;
 
@@ -67,6 +68,10 @@ public class Facade {
 
     public void changeActivityResponsable(String id, String CPF){
         this.activityController.changeActivityResponsable(id, CPF);
+    }
+
+    public Activity getActivity(String id){
+        return this.activityController.getActivity(id);
     }
 
     //todo implementar métodos de TaskController
