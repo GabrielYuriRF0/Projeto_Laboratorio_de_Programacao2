@@ -4,10 +4,14 @@ import com.sapo.person.PersonService;
 
 public class ActivityService {
     ActivityRepository ar;
-    PersonService pr;
+    PersonService ps;
+
+    public ActivityService(PersonService personService) {
+        this.ps = personService;
+    }
 
     public String addActivity(Activity a){
-        pr.checkRegistration(a.getCPF());
+        ps.checkRegistration(a.getCPF());
         if(a.getStatus() == 0){
             this.ar.addActivity(a);
             return a.getID();

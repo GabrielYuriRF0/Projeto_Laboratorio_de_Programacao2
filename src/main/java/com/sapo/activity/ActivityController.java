@@ -20,7 +20,7 @@ public class ActivityController {
 
 
     public ActivityController(){
-        as = new ActivityService();
+        as = new ActivityService(new PersonService());
         av = new ActivityValidator();
         pv = new PersonValidator();
         ar = new ActivityRepository();
