@@ -4,7 +4,7 @@ import org.junit.jupiter.api.*;
 import java.util.NoSuchElementException;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ActivityTest {
+public class ActivityTest extends BaseTest {
     private Facade facade;
     @BeforeEach
     public void createFacade(){
@@ -107,14 +107,58 @@ public class ActivityTest {
 
         }
     }
+    
+    @Test
+    void changeActivityDescriptionIsDone(){
+        String[] skills = {"Desenvolvedor"};
+        facade.registerPerson("014.596.031-50","Lucas",skills);
+        String id = facade.addActivity("Read", "Read one chapter","014.596.031-50");
+        facade.changeActivityDescription(id,"Test");
+        assertEquals("Test",facade.getActivity(id).getDescription());
+    }
 
+    @Test
+    void changeActivityResponsableIsDone(){
+        String[] skills = {"Desenvolvedor"};
+        facade.registerPerson("014.596.031-50","Lucas",skills);
+        String[] skills2 = {"Desenvolvedor", "Aluno"};
+        facade.registerPerson("540.829.754-38","Rafael",skills2);
+        String id = facade.addActivity("Read", "Read one chapter","014.596.031-50");
 
+        facade.changeActivityResponsable(id,"540.829.754-38");
+        assertEquals("540.829.754-38", facade.getActivity(id).getCPF());
+    }
 
+    void changeActivityResponsableIsFail1(){
+        String[] skills = {"Desenvolvedor"};
+        facade.registerPerson("014.596.031-50","Lucas",skills);
+        String id = facade.addActivity("Read", "Read one chapter","014.596.031-50");
 
+        try{
+            facade.changeActivityResponsable(id,"540.829.754-38");
 
+        }
+        catch (Exception e){
+            Exception exception = new NoSuchElementException("ID não existente no repositório");
+            assertEquals(e.getMessage(),exception.getMessage());
+        }
 
+    }
 
-
-
-
+    // todo Refactor this test
+//    void changeActivityResponsableIsFail2(){
+//        String[] skills = {"Desenvolvedor"};
+//        facade.registerPerson("014.596.031-50","Lucas",skills);
+//        String id = facade.addActivity("Read", "Read one chapter","014.596.031-50");
+//
+//        try{
+//            facade.changeActivityResponsable(id,"540.829.754-38");
+//        }
+//
+//        catch (Exception e){
+//
+//            assertEquals(e.getMessage(),exception.getMessage());
+//        }
+//
+//    }
 }

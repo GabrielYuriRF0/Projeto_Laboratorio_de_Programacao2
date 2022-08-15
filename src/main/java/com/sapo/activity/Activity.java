@@ -1,5 +1,6 @@
 package com.sapo.activity;
 
+import com.sapo.person.Person;
 import com.sapo.person.PersonRepository;
 
 public class Activity {
@@ -11,11 +12,13 @@ public class Activity {
     private String responsable;
 
 
+
     public Activity(String name, String description, String CPF){
         this.name = name;
         this.description = description;
         this.CPF = CPF;
         this.responsable = setResponsable(CPF);
+        this.status = 0;
     }
 
     public String getName() {
@@ -39,7 +42,7 @@ public class Activity {
 
     public String setResponsable(String CPF){
         PersonRepository pr = new PersonRepository();
-        var responsable = pr.searchPerson(CPF);
+        Person responsable = pr.searchPerson(CPF);
         return responsable.getName();
     }
     public void setDescription(String description) {

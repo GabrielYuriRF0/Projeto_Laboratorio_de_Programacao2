@@ -1,9 +1,13 @@
 package com.sapo.activity;
 
+import com.sapo.person.PersonService;
+
 public class ActivityService {
     ActivityRepository ar;
+    PersonService pr;
 
     public String addActivity(Activity a){
+        pr.checkRegistration(a.getCPF());
         if(a.getStatus() == 0){
             this.ar.addActivity(a);
             return a.getID();
@@ -51,6 +55,7 @@ public class ActivityService {
         activity.setCPF(CPF);
         activity.setResponsable(CPF);
     }
+
 
 
 }

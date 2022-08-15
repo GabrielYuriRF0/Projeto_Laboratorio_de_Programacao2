@@ -15,8 +15,9 @@ public class ActivityController {
     private final ActivityValidator av;
     private final PersonValidator pv;
     private final ActivityRepository ar;
-
     private final PersonRepository pr;
+    private final PersonController pc;
+
 
     public ActivityController(){
         as = new ActivityService();
@@ -24,21 +25,21 @@ public class ActivityController {
         pv = new PersonValidator();
         ar = new ActivityRepository();
         pr = new PersonRepository();
-
+        pc = new PersonController();
     }
 
     public String addActivity(String name, String description, String cpf){
-        boolean checkRegistration = this.pr.checkRegistration(cpf);
-        if(true){
-            this.av.descriptionValidator(description);
-            this.pv.nameValidator(name);
-            this.pv.cpfValidator(cpf);
+        //boolean checkRegistration = this.pc.checkRegistration(cpf);
+//        if(checkRegistration){
+            //this.av.descriptionValidator(description);
+            //this.pv.nameValidator(name);
+            //this.pv.cpfValidator(cpf);
             return this.as.addActivity(new Activity(name, description, cpf));
-        }
-        else{
-            throw new NoSuchElementException("Invalid ID");
+        //}
+        //else{
+            //throw new NoSuchElementException("Invalid ID");
 
-        }
+       //}
 
     }
 
@@ -67,9 +68,10 @@ public class ActivityController {
         this.as.changeActivityDescription(id, descricao);
     }
 
-    public void changeActivityResponsable(String id, String CPF){
+    public void changeActivityResponsable(String id, String cpf){
+        this.pv.cpfValidator(cpf);
         this.ar.searchIdInRepository(id);
-        this.as.changeActivityResponsable(id, CPF);
+        this.as.changeActivityResponsable(id, cpf);
     }
 
     public Activity getActivity(String id){

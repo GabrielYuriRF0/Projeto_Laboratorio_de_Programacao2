@@ -10,7 +10,6 @@ public class ActivityRepository {
     }
     public void addActivity(Activity a){
         String key = generateID(a);
-        a.setStatus(0);
         a.setID(key);
         this.activities.put(key, a);
     }

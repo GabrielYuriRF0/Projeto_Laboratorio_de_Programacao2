@@ -64,6 +64,7 @@ public class Facade {
 
     public void changeActivityDescription(String id, String descricao){
         this.activityController.changeActivityDescription(id, descricao);
+
     }
 
     public void changeActivityResponsable(String id, String CPF){

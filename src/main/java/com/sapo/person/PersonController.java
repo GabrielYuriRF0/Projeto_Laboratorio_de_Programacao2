@@ -103,6 +103,11 @@ public class PersonController {
         return this.personService.searchPerson(cpf).showComments();
     }
 
+    // FIXME rever implementação desse método:
+    public boolean checkRegistration(String cpf){
+        return this.personService.checkRegistration(cpf);
+    }
+
 
 
 
