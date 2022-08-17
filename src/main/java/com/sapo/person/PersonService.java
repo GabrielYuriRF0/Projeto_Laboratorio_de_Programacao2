@@ -9,11 +9,14 @@ public class PersonService {
         this.personRepository = new PersonRepository();
     }
 
+<<<<<<< HEAD
     public PersonService(Map<String, Person> people){
         this.personRepository = new PersonRepository(people);
     }
 
 
+=======
+>>>>>>> 896060fd7abb19b004272e2300c8277aece6ba05
     public void registerPerson(Person person){
         this.personRepository.registerPerson(person);
     }
