@@ -3,14 +3,12 @@ package com.sapo.person;
 import java.util.HashMap;
 import java.util.Map;
 
+// TODO Ao remover uma pessoa do sistema, todas as suas associações devem ser igualmente removidas.
 public class PersonRepository {
     public Map<String,Person> people;
 
     public PersonRepository(){
         this.people = new HashMap<>();
-    }
-    public PersonRepository(Map<String, Person> people){
-        this.people = people;
     }
 
     public void registerPerson(Person person){

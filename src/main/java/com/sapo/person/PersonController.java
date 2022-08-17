@@ -37,6 +37,7 @@ public class PersonController {
 
 
     }
+    //TODO refactor to validator.
 
     public String showPerson(String cpf){
         if(validator.cpfValidator(cpf) == false){

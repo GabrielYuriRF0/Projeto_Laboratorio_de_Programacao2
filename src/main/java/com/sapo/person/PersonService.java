@@ -9,11 +9,6 @@ public class PersonService {
         this.personRepository = new PersonRepository();
     }
 
-    public PersonService(Map<String, Person> peopple){
-        this.personRepository = new PersonRepository(peopple);
-    }
-
-
     public void registerPerson(Person person){
         this.personRepository.registerPerson(person);
     }
