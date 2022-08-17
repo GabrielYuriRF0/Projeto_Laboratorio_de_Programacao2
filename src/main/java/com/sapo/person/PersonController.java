@@ -9,15 +9,14 @@ import java.util.NoSuchElementException;
 
 
 public class PersonController {
-    private final PersonService personService;
-    private final PersonValidator validator;
-    private final CommentaryValidator commentaryValidator;
+    private  PersonService personService;
+    private  PersonValidator validator;
+    private  CommentaryValidator commentaryValidator;
 
-    public PersonController(){
-        this.personService = new PersonService();
+    public PersonController(PersonService personService){
+        this.personService = personService;
         this.validator = new PersonValidator();
         this.commentaryValidator = new CommentaryValidator();
-
     }
 
     public void registerPerson(String cpf, String name, String[] skills){

@@ -11,35 +11,35 @@ import com.sapo.validators.PersonValidator;
 import java.util.NoSuchElementException;
 
 public class ActivityController {
-    private final ActivityService as;
-    private final ActivityValidator av;
-    private final PersonValidator pv;
-    private final ActivityRepository ar;
-    private final PersonRepository pr;
-    private final PersonController pc;
+    private  ActivityService as;
+    private  ActivityValidator av;
+    private  PersonValidator pv;
+    private  ActivityRepository ar;
+    private PersonService ps;
 
 
-    public ActivityController(){
+    public ActivityController(PersonService personService){
         as = new ActivityService(new PersonService());
         av = new ActivityValidator();
         pv = new PersonValidator();
         ar = new ActivityRepository();
-        pr = new PersonRepository();
-        pc = new PersonController();
+        ps = personService;
+
     }
 
     public String addActivity(String name, String description, String cpf){
-        //boolean checkRegistration = this.pc.checkRegistration(cpf);
-//        if(checkRegistration){
-            //this.av.descriptionValidator(description);
-            //this.pv.nameValidator(name);
-            //this.pv.cpfValidator(cpf);
-            return this.as.addActivity(new Activity(name, description, cpf));
-        //}
-        //else{
-            //throw new NoSuchElementException("Invalid ID");
+        boolean checkRegistration = this.ps.checkRegistration(cpf);
+        if(checkRegistration){
 
-       //}
+            this.av.descriptionValidator(description);
+            this.pv.nameValidator(name);
+            this.pv.cpfValidator(cpf);
+            return this.as.addActivity(new Activity(name, description, cpf));
+        }
+        else{
+            throw new NoSuchElementException("Invalid ID");
+
+       }
 
     }
 

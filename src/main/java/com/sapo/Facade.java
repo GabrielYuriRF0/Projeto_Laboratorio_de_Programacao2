@@ -3,20 +3,22 @@ package com.sapo;
 import com.sapo.activity.Activity;
 import com.sapo.activity.ActivityController;
 import com.sapo.activity.ActivityService;
+import com.sapo.person.Person;
 import com.sapo.person.PersonController;
 import com.sapo.person.PersonService;
 
 public class Facade {
+
+    private PersonService personService;
     private PersonController personController;
     private ActivityController activityController;
     // todo Atribbute for TaskController
 
     public Facade(){
-        var personService = new PersonService();
-        var activityService = new ActivityService(personService);
+        this.personService = new PersonService();
+        this.personController = new PersonController(personService);
+        this.activityController = new ActivityController(personService);
 
-        this.personController = new PersonController();
-        this.activityController = new ActivityController();
     }
 
     public void registerPerson(String cpf, String name, String[] skills){

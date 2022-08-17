@@ -3,14 +3,14 @@ package com.sapo.person;
 import java.util.Map;
 
 public class PersonService {
-    private final PersonRepository personRepository;
+    private  PersonRepository personRepository;
 
     public PersonService(){
         this.personRepository = new PersonRepository();
     }
 
-    public PersonService(Map<String, Person> peopple){
-        this.personRepository = new PersonRepository(peopple);
+    public PersonService(Map<String, Person> people){
+        this.personRepository = new PersonRepository(people);
     }
 
 
