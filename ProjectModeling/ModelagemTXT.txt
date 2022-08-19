@@ -156,7 +156,7 @@ composes ActivityRepository
 Task
 ---
 - name:str
-- time:str
+- time:int
 - skills:str[]
 - status:str
 - team:Map<str,str>
