@@ -138,9 +138,9 @@ composes PersonService
 
 
 ActivityController
-composes ActivityRepository
+composes ActivityService
 ---
-- activityRepository: ActivityRepository
+- activityService: ActivityService
 ---
 + ActivityController()
 + registerActivity(name:str, description:str, cpf:str):void
