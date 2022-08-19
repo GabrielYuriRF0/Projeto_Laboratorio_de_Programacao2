@@ -14,6 +14,7 @@ public class ActivityRepository {
         this.activities.put(key, a);
     }
 
+    //TODO implementar esse método dentro da própria classe activity, pois o id deveria ser criado lá e o repositório só precisaria acessar.
     public String generateID(Activity a){
         StringBuilder consonants = new StringBuilder();
         StringBuilder id = new StringBuilder();

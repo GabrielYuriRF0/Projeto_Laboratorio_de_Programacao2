@@ -17,7 +17,7 @@ public class Activity {
         this.name = name;
         this.description = description;
         this.CPF = CPF;
-        this.responsable = setResponsable(CPF);
+        this.responsable = this.setResponsable(CPF);
         this.status = 0;
     }
 
@@ -61,6 +61,7 @@ public class Activity {
         this.id = ID;
     }
 
+    //TODO Deve ser possível alterar a descrição ou responsável da atividade. Uma atividade pode não ter responsável (pessoa removida), Neste caso a linha do responsável não aparece em sua exibição.
     @Override
     public String toString() {
         return  id + ": " + name + "\n" +
