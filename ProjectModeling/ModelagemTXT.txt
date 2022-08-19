@@ -141,6 +141,7 @@ ActivityController
 composes ActivityService
 ---
 - activityService: ActivityService
+- personService: PersonService
 ---
 + ActivityController()
 + registerActivity(name:str, description:str, cpf:str):void
