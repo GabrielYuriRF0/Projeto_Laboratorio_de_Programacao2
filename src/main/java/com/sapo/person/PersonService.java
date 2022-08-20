@@ -3,8 +3,8 @@ package com.sapo.person;
 public class PersonService {
     private PersonRepository personRepository;
 
-    public PersonService(PersonRepository personRepository){
-        this.personRepository = personRepository;
+    public PersonService(){ //o person service nao vai receber um repositorio, ele cria o proprio.
+        this.personRepository = new PersonRepository();
     }
 
     public void registerPerson(Person person){

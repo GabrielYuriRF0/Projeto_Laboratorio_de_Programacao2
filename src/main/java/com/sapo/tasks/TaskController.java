@@ -12,27 +12,27 @@ public class TaskController {
     }
 
     public void setName(String idTask, String newName){
-        taskService.setName(idTask, newName);
+        this.taskService.setName(idTask, newName);
     }
 
     public void setSkills(String idTask, String[] skills){
-        taskService.setSkills(idTask, skills);
+        this.taskService.setSkills(idTask, skills);
     }
 
     public void addHour(String idTask, int hour){
-        taskService.addHour(idTask, hour);
+        this.taskService.addHour(idTask, hour);
     }
 
     public void removeHour(String idTask, int hour){
-        taskService.removeHour(idTask, hour);
+        this.taskService.removeHour(idTask, hour);
     }
 
     public void concludeTask(String idTask){
-        taskService.concludeTask(idTask);
+        this.taskService.concludeTask(idTask);
     }
 
     public void removeTask(String idTask){
-        taskService.removeTask(idTask);
+        this.taskService.removeTask(idTask);
     }
 
     public String showTask(String idTask){
@@ -43,7 +43,7 @@ public class TaskController {
         //TODO dps.
     }
 
-    public void removerPersonTask(String cpf, String idTask){
+    public void removePersonTask(String cpf, String idTask){
         //TODO dps.
     }
 
