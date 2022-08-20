@@ -1,0 +1,303 @@
+Person
+composes Commentary
+---
+- cpf:str
+- name:str
+- skills:str[]
+- Comments:Array<Commentary>
+---
++ Person(cpf:str, name:str, skills:str[])
++ Person(cpf:str, name:str)
++ toString():str
++ setName(newName:str):void
++ setSkills(newSkils:str[]):void
++ addCommentary(commentary:Commentary):void
++ showComments():str
++ getCpf():str
++ getName():str
+---
+
+
+
+Commentary
+---
+- currentDate:Date
+- description:str
+- author:str
+---
++ Commentary(description:str, author:str)
++ toString():str
+---
+
+
+PersonRepository
+aggregates Person
+---
+- people:Map<String, Person>
+---
++ PersonRepository()
++ registerPerson(person:Person):void
++ removePerson(cpf:str):void
++ showPerson(cpf:str):str
++ changeName(cpf:str, newName:str):void
++ changeSkills(cpf:str, newSkills:str[]):void
++ addComments(cpf:str, description:str, author:str):void
++ showComments(cpf:str):str
++ getName(cpf:str):str
+---
+
+PersonService
+composes PersonRepository
+---
+- personRepository: PersonRepository
+---
++ PersonService()
++ registerPerson(person:Person):void
++ removePerson(cpf:str):void
++ showPerson(cpf:str):str
++ changeName(cpf:str, newName:str):void
++ changeSkills(cpf:str, newSkills:str[]):void
++ addComments(cpf:str, description:str, author:str):void
++ showComments(cpf:str):str
++ getName(cpf:str):str
+
+---
+
+
+PersonController
+composes PersonService
+association PersonValidator
+---
+- personService: PersonService
+---
++ PersonController()
++ registerPerson(cpf:str, name:str, skills:str[]):void
++ removePerson(cpf:str):void
++ showPerson(cpf:str):str
++ changeName(cpf:str, newName:str):void
++ changeSkills(cpf:str, newSkills:str[]):void
++ addComments(cpf:str, description:str, author:str):void
++ showComments(cpf:str):str
++ getName(cpf:str):str
+
+---
+
+Activity
+---
+- name:str
+- description:str
+- cpf:str
+- responsableName:str
+- status:str
+- id:str
+---
++ Activity(name:str, description:str, cpf:str) // Utilizar O generateID no repositório no método de criar atividade
++ generateId(activitys:int):void
++ concludeActivity():void
++ disableActivity():void
++ reopenActivity():void
++ toString():str
++ changeDescription(newDescription:str):void
++ changeResponsable(newCpf:str):void
++ getResponsableName():str
++ getId(): str
+---
+
+ActivityRepository
+aggregates Activity
+---
+- activitys: Map<String, Activity>
+---
++ ActivityRepository()
++ registerActivity(activity:Activity):str
++ concludeActivity(idActivity:str):void
++ disableActivity(idActivity:str):void
++ reopenActivity(idActivity:str):void
++ showActivity(idActivity:str):str
++ changeDescription(idActivity:str, newDescription:Str):void
++ changeResponsable(idActivity:str, cpf:Str):void
++ getResponsableName(idActivity:str):str
+---
+
+ActivityService
+composes ActivityRepository
+composes PersonService
+---
+- activityRepository: ActivityRepository
+- personService: PersonService
+---
++ ActivityService(personService:PersonService)
++ registerActivity(activity:Activity):void
++ concludeActivity(idActivity:str):void
++ disableActivity(idActivity:str):void
++ reopenActivity(idActivity:str):void
++ showActivity(idActivity:str):str
++ changeDescription(idActivity:str, newDescription:Str):void
++ changeResponsable(idActivity:str, cpf:Str):void
++ getResponsableName(idActivity:str):str
+---
+
+
+ActivityController
+composes ActivityService
+---
+- activityService: ActivityService
+- personService: PersonService
+---
++ ActivityController()
++ registerActivity(name:str, description:str, cpf:str):void
++ concludeActivity(idActivity:str):void
++ disableActivity(idActivity:str):void
++ reopenActivity(idActivity:str):void
++ showActivity(idActivity:str):str
++ changeDescription(idActivity:str, newDescription:Str):void
++ changeResponsable(idActivity:str, cpf:Str):void
++ getResponsableName(idActivity:str):str
+---
+
+Task
+---
+- name:str
+- time:int
+- skills:str[]
+- status:str
+- team:Map<str,str>
+---
++ Task(name:str, skills:str[])
++ setName(newName:str):void
++ setSkills(newSkills:str[]):void
++ addTime(hours:int):void
++ removeTime(hours:int):void
++ concludeTask():void
++ removeTask():void
++ toString():str
++ addPersonTask(cpf:str):void
++ removePersonTask(cpf:str):void
+---
+
+TaskRepository
+aggregates Task
+---
+- tasks:Map<str, Task>
+---
++ TaskRepository()
++ RegisterTask(task:Task):str
++ setName(idTask:str, newName:str):void
++ setSkills(idTask:str, newSkills:str[]):void
++ addHours(idTask:str, hours:int):void
++ removeHours(idTask:str, hours:int):void
++ concludeTask(idTask:str):void
++ removeTask(idTask:str):void
++ showTask(idTask:str):void
++ addPersonTask(cpf:str,idTask:str):void
++ removerPersonTask(cpf:str, idTask:str):void
+---
+
+TaskService
+composes TaskRepository
+association ActivityService
+---
+- taskRepository:TaskRepository
+- activityService: ActivityService
+---
++ TaskService(activityService:ActivityService)
++ RegisterTask(task:Task):str
++ setName(idTask:str, newName:str):void
++ setSkills(idTask:str, newSkills:str[]):void
++ addHours(idTask:str, hours:int):void
++ removeHours(idTask:str, hours:int):void
++ concludeTask(idTask:str):void
++ removeTask(idTask:str):void
++ showTask(idTask:str):void
++ addPersonTask(cpf:str,idTask:str):void
++ removerPersonTask(cpf:str, idTask:str):void
+---
+
+TaskController
+composes TaskService
+---
+- taskService:TaskService
+---
++ TaskController()
++ RegisterTask(idActivity:str, name:str, skills:str[]):str
++ setName(idTask:str, newName:str):void
++ setSkills(idTask:str, newSkills:str[]):void
++ addHours(idTask:str, hours:int):void
++ removeHours(idTask:str, hours:int):void
++ concludeTask(idTask:str):void
++ removeTask(idTask:str):void
++ showTask(idTask:str):void
++ addPersonTask(cpf:str,idTask:str):void
++ removerPersonTask(cpf:str, idTask:str):void
+---
+
+Validator 
+//Abstract class
+---
+---
++ generalValidate():void //IllegalArgumentException
+---
+
+PersonValidator
+extends Validator
+---
+---
++ PersonValidator()
++ generalValidator(cpf:str, name:str, skills:str):void
++ cpfValidator(cpf:str):void
+---
+
+Facade
+composes PersonController
+composes ActivityController
+composes TaskController
+---
+- personController:PersonController
+- activityController:ActivityController
+- taskController:TaskController
+---
++ Facade()
+
+//Referente a Person
++ registerPerson(cpf:str, name:str, skills:str[]):void
++ removePerson(cpf:str):void
++ showPerson(cpf:str):str
++ changeName(cpf:str, newName:str):void
++ changeSkills(cpf:str, newSkills:str[]):void
++ addComments(cpf:str, description:str, author:str):void
++ showComments(cpf:str):str
++ getName(cpf:str):str
+
+//Referente a Activity
++ registerActivity(name:str, description:str, cpf:str):void
++ concludeActivity(idActivity:str):void
++ disableActivity(idActivity:str):void
++ reopenActivity(idActivity:str):void
++ showActivity(idActivity:str):str
++ changeDescription(idActivity:str, newDescription:Str):void
++ changeResponsable(idActivity:str, cpf:Str):void
++ getResponsableName(idActivity:str):str
+
+//Referente a Task
++ RegisterTask(idActivity:str, name:str, skills:str[]):str
++ setName(idTask:str, newName:str):void
++ setSkills(idTask:str, newSkills:str[]):void
++ addHours(idTask:str, hours:int):void
++ removeHours(idTask:str, hours:int):void
++ concludeTask(idTask:str):void
++ removeTask(idTask:str):void
++ showTask(idTask:str):void
++ addPersonTask(cpf:str,idTask:str):void
++ removerPersonTask(cpf:str, idTask:str):void
+---
+
+
+
+
+
+
+
+
+
+
+
