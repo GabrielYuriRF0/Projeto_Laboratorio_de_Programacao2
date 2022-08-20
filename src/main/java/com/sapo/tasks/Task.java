@@ -1,9 +1,10 @@
 package com.sapo.tasks;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.sapo.person.Person;
+
 
 public class Task {
     private String name;
@@ -17,6 +18,7 @@ public class Task {
         this.skills = skills;
         this.hour = 0;
         this.status = "STARDED";
+        this.team = new HashMap<>();
     }
 
     public void setName(String newName){
@@ -27,11 +29,11 @@ public class Task {
         this.skills = newSkills;
     }
 
-    public void addTime(int hours){
+    public void addHour(int hours){
         this.hour += hours;
     }
 
-    public void removeTime(int hours){
+    public void removeHour(int hours){
         //TODO validacao caso hora seja negativa.
         this.hour -= hours;
     }
@@ -41,10 +43,28 @@ public class Task {
             this.status = "FINISHED";
         }
         else{
-            throw new IllegalStateException("Invalid Operation, the task status isn't starded");
+            throw new IllegalStateException("Invalid Operation, the task status isn't STARDED");
         }
     }
 
+    public void removeTask(){
+        this.status = "REMOVED";
+    }
+
+    public String toString(){
+        return "  ";
+        //TODO implementar tostring depois.
+    }
+
+    public void addPersonTask(String cpf){
+        this.team.put(cpf,cpf);
+        //TODO implementar depois que fizer repositorio,service e controller.
+    }
+
+    public void removePersonTask(String cpf){
+        this.team.remove(cpf);
+        //TODO implementar depois que fizer repositorio,service e controller ---- MAS ACHO QUE ESTÁ CERTO.
+    }
 
 
 }
