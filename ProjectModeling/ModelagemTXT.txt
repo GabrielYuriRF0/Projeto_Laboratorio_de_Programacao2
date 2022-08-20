@@ -186,7 +186,7 @@ aggregates Task
 + removeHours(idTask:str, hours:int):void
 + concludeTask(idTask:str):void
 + removeTask(idTask:str):void
-+ showTask(idTask:str):void
++ showTask(idTask:str):str
 + addPersonTask(cpf:str,idTask:str):void
 + removerPersonTask(cpf:str, idTask:str):void
 ---
