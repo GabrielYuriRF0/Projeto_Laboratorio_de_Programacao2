@@ -100,6 +100,7 @@ Activity
 + changeDescription(newDescription:str):void
 + changeResponsable(newCpf:str):void
 + getResponsableName():str
++ getId(): str
 ---
 
 ActivityRepository
@@ -138,9 +139,10 @@ composes PersonService
 
 
 ActivityController
-composes ActivityRepository
+composes ActivityService
 ---
-- activityRepository: ActivityRepository
+- activityService: ActivityService
+- personService: PersonService
 ---
 + ActivityController()
 + registerActivity(name:str, description:str, cpf:str):void
