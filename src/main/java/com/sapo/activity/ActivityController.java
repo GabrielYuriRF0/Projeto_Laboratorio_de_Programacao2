@@ -7,9 +7,9 @@ public class ActivityController {
     private ActivityService activityService;
     private PersonService personService;
 
-    public ActivityController(){
-        this.personService = new PersonService();
-        this.activityService = new ActivityService(this.personService);
+    public ActivityController(PersonService personService, ActivityService activityService){
+        this.activityService = activityService;
+        this.personService = personService;
     }
 
     public void registerActivity(String name, String description, String cpf){
