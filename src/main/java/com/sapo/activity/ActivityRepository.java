@@ -45,7 +45,7 @@ public class ActivityRepository {
     }
     public void changeResponsable(String idActivity, String cpf){
         if(this.activities.containsKey(idActivity)){
-            this.activities.get(idActivity).changeDescription(cpf);
+            this.activities.get(idActivity).changeResponsable(cpf);
         }
     }
 
