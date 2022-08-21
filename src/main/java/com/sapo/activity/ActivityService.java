@@ -7,21 +7,26 @@ public class ActivityService {
     private PersonService personService;
 
     public ActivityService(PersonService personService){
+        //todo checar se o status é valido para a operação
         this.personService = personService;
         this.activityRepository = new ActivityRepository();
     }
 
     public void registerActivity(Activity activity){
+        //todo checar se o status é valido para a operação
         this.activityRepository.registerActivity(activity);
     }
 
     public void concludeActivity(String idActivity){
+        //todo checar se o status é valido para a operação
         this.activityRepository.concludeActivity(idActivity);
     }
     public void disableActivity(String idActivity){
+        //todo checar se o status é valido para a operação
         this.activityRepository.disableActivity(idActivity);
     }
     public void reopenActivity(String idActivity){
+        //todo checar se o status é valido para a operação
         this.activityRepository.reopenActivity(idActivity);
     }
     public String showActivity(String idActivity){

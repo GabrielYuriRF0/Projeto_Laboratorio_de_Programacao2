@@ -5,11 +5,9 @@ import com.sapo.person.PersonService;
 
 public class ActivityController {
     private ActivityService activityService;
-    private PersonService personService;
 
-    public ActivityController(){
-        this.personService = new PersonService();
-        this.activityService = new ActivityService(this.personService);
+    public ActivityController(ActivityService activityService){
+        this.activityService = activityService;
     }
 
     public void registerActivity(String name, String description, String cpf){
