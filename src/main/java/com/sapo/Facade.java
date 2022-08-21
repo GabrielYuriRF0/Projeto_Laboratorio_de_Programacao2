@@ -54,6 +54,7 @@ public class Facade {
     //---------------------------------------------TASK-------------------------------------------------------------
     public String registerTask(String idActivity, String name, String[] skills){
         //TODO depois.
+        return "";
     }
 
     public void setNameTask(String idTask, String newName){
@@ -82,6 +83,8 @@ public class Facade {
 
     public String showTask(String idTask){
         //TODO dps.
+        return "";
+
     }
 
     public void addPersonTask(String cpf, String idTask){
