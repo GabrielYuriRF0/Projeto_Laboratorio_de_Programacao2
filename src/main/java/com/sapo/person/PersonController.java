@@ -39,5 +39,4 @@ public class PersonController {
     public String getPersonName(String cpf){
         return this.personService.getPersonName(cpf);
     }
-
 }
