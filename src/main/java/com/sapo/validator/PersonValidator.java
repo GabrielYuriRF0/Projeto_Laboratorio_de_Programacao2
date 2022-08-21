@@ -5,10 +5,10 @@ import br.com.caelum.stella.validation.CPFValidator;
 
 import java.util.List;
 
-public class PersonValidator {
+public class PersonValidator extends Validator  {
 
-    public void generalValidadate(String cpf, String name, String skills) {
-        if(cpf.isEmpty() || name.isEmpty() || skills.isEmpty()){
+    public void generalValidate(String name,String[] skills) {
+        if(skills == null){
             throw new IllegalArgumentException("Empty or null attribute!");
         }
 
@@ -21,6 +21,5 @@ public class PersonValidator {
         if(erros.isEmpty() == false){
             throw new IllegalArgumentException("Invalid cpf!");
         }
-
     }
 }

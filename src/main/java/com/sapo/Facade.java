@@ -3,6 +3,7 @@ package com.sapo;
 import com.sapo.activity.Activity;
 import com.sapo.activity.ActivityController;
 import com.sapo.activity.ActivityService;
+import com.sapo.person.Commentary;
 import com.sapo.person.Person;
 import com.sapo.person.PersonController;
 import com.sapo.person.PersonService;
@@ -23,6 +24,38 @@ public class Facade {
         this.activityController = new ActivityController(activityService);
         this.taskController = new TaskController(taskService);
         //ATÉ ENTAO TA CERTO.
+    }
+
+    //Métodos de PersonController
+    public void registerPerson(String cpf, String name, String[] skills){
+        this.personController.registerPerson(cpf, name, skills);
+    }
+
+    public void removePerson(String cpf){
+        this.personController.removePerson(cpf);
+    }
+    public String showPerson(String cpf){
+        return this.personController.showPerson(cpf);
+    }
+
+    public void setPersonName(String cpf, String newName){
+        this.personController.setPersonName(cpf, newName);
+    }
+
+    public void setPersonSkills(String cpf, String[] newSkills){
+        this.personController.setPersonSkills(cpf, newSkills);
+    }
+
+    public void registerComments(String cpf, Commentary commentary){
+        this.personController.registerComments(cpf, commentary);
+    }
+
+    public String showComments(String cpf){
+        return this.personController.showComments(cpf);
+    }
+
+    public String getPersonName(String cpf){
+        return this.personController.getPersonName(cpf);
     }
 
     //Metódos de activityController
