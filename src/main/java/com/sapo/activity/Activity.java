@@ -2,10 +2,9 @@ package com.sapo.activity;
 
 import com.sapo.person.Person;
 import com.sapo.person.PersonRepository;
+import com.sapo.tasks.Task;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Activity {
     private String name;
@@ -14,18 +13,14 @@ public class Activity {
     private String responsableName;
     private String status;
     private String id;
-
-    public String getCpf() {
-        return cpf;
-    }
-//todo pegar o map de taks
-
+    private Map<String, Task> tasks;
 
     public Activity(String name, String description, String cpf){
         this.name = name;
         this.description = description;
         this.cpf = cpf;
         this.status = "STARTED";
+        this.tasks = new HashMap<>();
     }
 
     public void generateId(int size){
@@ -106,5 +101,9 @@ public class Activity {
 
     public String getResponsableName(){
         return this.responsableName;
+    }
+
+    public String getCpf() {
+        return cpf;
     }
 }

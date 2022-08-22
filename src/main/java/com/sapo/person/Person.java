@@ -51,7 +51,6 @@ public class Person{
 
         for(Commentary commentary: this.comments){
             totalComments += commentary.toString() + "\n";
-
         }
         return totalComments;
     }

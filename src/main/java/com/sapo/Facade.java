@@ -86,8 +86,7 @@ public class Facade {
 
     //---------------------------------------------TASK-------------------------------------------------------------
     public String registerTask(String idActivity, String name, String[] skills){
-        //TODO depois.
-        return "";
+        return this.taskController.registerTask(idActivity,name,skills);
     }
 
     public void setNameTask(String idTask, String newName){
