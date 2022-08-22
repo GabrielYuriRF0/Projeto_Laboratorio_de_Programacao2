@@ -114,17 +114,16 @@ public class Facade {
     }
 
     public String showTask(String idTask){
-        //TODO dps.
-        return "";
+        return this.taskController.showTask(idTask);
 
     }
 
     public void addPersonTask(String cpf, String idTask){
-        //TODO dps.
+        this.taskController.addPersonTask(cpf, idTask);
     }
 
     public void removePersonTask(String cpf, String idTask){
-        //TODO dps.
+        this.taskController.removePersonTask(cpf, idTask);
     }
 
 

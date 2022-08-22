@@ -3,6 +3,7 @@ package com.sapo.activity;
 import com.sapo.person.Person;
 import com.sapo.person.PersonRepository;
 import com.sapo.tasks.Task;
+import com.sapo.tasks.TaskRepository;
 
 import java.util.*;
 
@@ -13,14 +14,14 @@ public class Activity {
     private String responsableName;
     private String status;
     private String id;
-    private Map<String, Task> tasks;
+    private TaskRepository tasks;
 
     public Activity(String name, String description, String cpf){
         this.name = name;
         this.description = description;
         this.cpf = cpf;
         this.status = "STARTED";
-        this.tasks = new HashMap<>();
+        this.tasks = new TaskRepository();
     }
 
     public void generateId(int size){

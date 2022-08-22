@@ -66,5 +66,9 @@ public class Task {
         //TODO implementar depois que fizer repositorio,service e controller ---- MAS ACHO QUE ESTÁ CERTO.
     }
 
+    public String getStatus(){
+        return this.status;
+    }
+
 
 }
