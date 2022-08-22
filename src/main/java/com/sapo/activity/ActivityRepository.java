@@ -43,9 +43,9 @@ public class ActivityRepository {
             this.activities.get(idActivity).changeDescription(newDescription);
         }
     }
-    public void changeResponsable(String idActivity, String cpf){
+    public void changeResponsable(String idActivity, String cpf, String responsableName){
         if(this.activities.containsKey(idActivity)){
-            this.activities.get(idActivity).changeResponsable(cpf);
+            this.activities.get(idActivity).changeResponsable(cpf, responsableName);
         }
     }
 
@@ -56,4 +56,9 @@ public class ActivityRepository {
         }
         return result;
     }
+
+    public Activity recoverActivity(String idActivity){
+        return this.activities.get(idActivity);
+    }
+
 }

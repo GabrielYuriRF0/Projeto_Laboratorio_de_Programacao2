@@ -14,7 +14,11 @@ public class Activity {
     private String responsableName;
     private String status;
     private String id;
-    //todo pegar o map de taks
+
+    public String getCpf() {
+        return cpf;
+    }
+//todo pegar o map de taks
 
 
     public Activity(String name, String description, String cpf){
@@ -68,6 +72,9 @@ public class Activity {
     public void reopenActivity(){
         this.status = "STARTED";
     }
+    public String getStatus() {
+        return status;
+    }
 
     public String getId() {
         return id;
@@ -88,8 +95,13 @@ public class Activity {
         this.description = newDescription;
     }
 
-    public void changeResponsable(String Cpf){
-        this.responsableName = cpf;
+    public void changeResponsable(String Cpf, String responsableName){
+        this.responsableName = responsableName;
+        this.cpf = Cpf;
+    }
+
+    public void setResponsableName(String responsableName) {
+        this.responsableName = responsableName;
     }
 
     public String getResponsableName(){
