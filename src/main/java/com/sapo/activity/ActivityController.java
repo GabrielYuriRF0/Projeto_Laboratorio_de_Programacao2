@@ -14,12 +14,12 @@ public class ActivityController {
         this.activityService = activityService;
     }
 
-    public void registerActivity(String name, String description, String cpf){
+    public String registerActivity(String name, String description, String cpf){
         this.validator.validateGeneralString(name);
         this.validator.validateGeneralString(description);
         this.validator.validateGeneralString(cpf);
         this.personValidator.cpfValidator(cpf);
-        this.activityService.registerActivity(new Activity(name, description,cpf));
+        return this.activityService.registerActivity(new Activity(name, description,cpf));
     }
     public void concludeActivity(String idActivity){
         this.validator.idValidator(idActivity);
