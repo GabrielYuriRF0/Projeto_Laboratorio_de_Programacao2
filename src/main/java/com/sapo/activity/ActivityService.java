@@ -11,10 +11,10 @@ public class ActivityService {
         this.activityRepository = new ActivityRepository();
     }
 
-    public void registerActivity(Activity activity){
+    public String registerActivity(Activity activity){
         if(activity.getStatus().equals("STARTED")){
             activity.setResponsableName(this.personService.getPersonName(activity.getCpf()));
-            this.activityRepository.registerActivity(activity);
+            return this.activityRepository.registerActivity(activity);
         }else{
             throw new IllegalArgumentException("Invalid Atributte");
         }

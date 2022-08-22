@@ -59,8 +59,8 @@ public class Facade {
     }
 
     //Metódos de activityController
-    public void registerActivity(String name, String description, String cpf){
-        this.activityController.registerActivity(name, description, cpf);
+    public String registerActivity(String name, String description, String cpf){
+        return this.activityController.registerActivity(name, description, cpf);
     }
     public void concludeActivity(String idActivity){
         this.activityController.concludeActivity(idActivity);
