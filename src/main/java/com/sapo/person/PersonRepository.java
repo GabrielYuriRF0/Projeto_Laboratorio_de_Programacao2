@@ -56,4 +56,9 @@ public class PersonRepository {
         }
     }
 
+    public Person getPerson(String cpf){
+        checkRegistration(cpf);
+        return this.people.get(cpf);
+    }
+
 }

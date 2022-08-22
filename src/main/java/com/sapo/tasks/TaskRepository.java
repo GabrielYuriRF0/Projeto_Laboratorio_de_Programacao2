@@ -56,4 +56,8 @@ public class TaskRepository {
     public int quantityTasks(){
         return this.tasks.size();
     }
+
+    public Task getTask(String idTask){
+        return this.tasks.get(idTask);
+    }
 }

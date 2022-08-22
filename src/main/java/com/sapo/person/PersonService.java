@@ -3,7 +3,7 @@ package com.sapo.person;
 public class PersonService {
     private PersonRepository personRepository;
 
-    public PersonService(){ //o person service nao vai receber um repositorio, ele cria o proprio.
+    public PersonService(){
         this.personRepository = new PersonRepository();
     }
 
@@ -39,4 +39,7 @@ public class PersonService {
         return this.personRepository.getPersonName(cpf);
     }
 
+    public Person getPerson(String cpf){
+        return this.personRepository.getPerson(cpf);
+    }
 }

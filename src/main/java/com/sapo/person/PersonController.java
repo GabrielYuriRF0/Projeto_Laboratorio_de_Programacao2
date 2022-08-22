@@ -53,4 +53,8 @@ public class PersonController {
         personValidator.cpfValidator(cpf);
         return this.personService.getPersonName(cpf);
     }
+    public Person getPerson(String cpf){
+        //TODO validação.
+        return this.personService.getPerson(cpf);
+    }
 }
