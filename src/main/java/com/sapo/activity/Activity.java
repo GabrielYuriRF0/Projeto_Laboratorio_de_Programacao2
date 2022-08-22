@@ -45,7 +45,7 @@ public class Activity {
             for(int i = 0; i < consonants.length();i++){
                 result.append(consonants.charAt(i));
             }
-            while(id.length() <= 3){
+            for(int i = consonants.length(); i <= 3; i++){
                 result.append("X");
             }
         }else{

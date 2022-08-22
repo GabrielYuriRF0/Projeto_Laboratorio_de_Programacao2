@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ActivityTest extends BaseTest {
     @Test
     void registerActivityIsDone(){
-        String idActivity = facade.registerActivity("Estudar","Estudar Java", "357.672.271-87");
+        String idActivity = facade.registerActivity("Estudar","Estudar Java", super.cpf1);
         Activity activity = facade.getActivity(idActivity);
         assertEquals(idActivity, activity.getId());
     }
@@ -39,10 +39,26 @@ public class ActivityTest extends BaseTest {
     @Test
     void registerActivityIsFailInvalidName(){
         try{
-            facade.registerActivity("Estudar","Estudar Java","024.144.614-70");
+            facade.registerActivity("","Estudar Java",super.cpf1);
         }
-        catch(NoSuchElementException e){
-            assertEquals("This cpf is not registered in the system!",e.getMessage());
+        catch(IllegalArgumentException e){
+            assertEquals("Empty or null attribute!",e.getMessage());
         }
+    }
+
+    @Test
+    void registerActivityIsFailInvalidDescription(){
+        try{
+            facade.registerActivity("Estudar","",super.cpf1);
+        }
+        catch(IllegalArgumentException e){
+            assertEquals("Empty or null attribute!",e.getMessage());
+        }
+    }
+
+    @Test
+    void concludeActivityIsDone(){
+        facade.concludeActivity(super.idActivity1);
+        assertEquals("FINISHED",super.activity1.getStatus());
     }
 }
