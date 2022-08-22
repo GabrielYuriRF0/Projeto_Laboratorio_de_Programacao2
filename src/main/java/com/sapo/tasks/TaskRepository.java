@@ -1,5 +1,7 @@
 package com.sapo.tasks;
 
+import com.sapo.activity.Activity;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,8 +41,8 @@ public class TaskRepository {
         tasks.get(idTask).removeTask();
         tasks.remove(idTask);
     }
-    public String showTask(String idTask){
-        //TODO ver o tostring depois.
+    public String showTask(String idTask, Activity activity){
+        return tasks.get(idTask).toString(activity);
     }
 
     public void addPersonTask(String idTask){

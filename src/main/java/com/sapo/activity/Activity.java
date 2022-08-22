@@ -112,4 +112,10 @@ public class Activity {
     public TaskRepository getTasks(){
         return this.tasks;
     }
+    public String getName(){
+        return this.name;
+    }
+    public String getDescription(){
+        return this.description;
+    }
 }

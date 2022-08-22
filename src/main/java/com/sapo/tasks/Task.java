@@ -1,5 +1,7 @@
 package com.sapo.tasks;
 
+import com.sapo.activity.Activity;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,9 +55,28 @@ public class Task{
         this.status = "REMOVED";
     }
 
-    public String toString(){
-        return "  ";
-        //TODO implementar tostring depois.
+    public String toString(Activity activity){
+        String skills = "";
+        String team = "";
+        for(String cpf : this.team.keySet()){
+            team += cpf + " " + "-" + " " + this.team.get(cpf) + "\n";
+        }
+        for(int i = 0; i < this.skills.length; i++){
+            if(i == this.skills.length - 1){
+                skills += this.skills[i];
+            }
+            skills += this.skills[i] + ", ";
+        }
+        String exibir = this.name + " " + "-" + " "+ this.id + "\n"
+                + "-" + " " + activity.getName() + "\n"
+                + skills + "\n"
+                + "(" + this.hour + "horas(s) executada(s))" + "\n"
+                + "===" + "\n"
+                + activity.getDescription() + "\n"
+                + "===" + "\n"
+                + "Equipe:\n"
+                + team;
+        return exibir;
     }
 
     public void addPersonTask(String cpf){
@@ -74,6 +95,7 @@ public class Task{
 
     public String generateId(String idActivity, int taskSize){
         String id = idActivity + "-" + taskSize;
+        this.id = id;
         return id;
     }
 

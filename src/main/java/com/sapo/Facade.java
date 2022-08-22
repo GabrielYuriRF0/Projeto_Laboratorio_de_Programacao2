@@ -18,7 +18,7 @@ public class Facade {
     public Facade(){
         var personService = new PersonService();
         var activityService = new ActivityService(personService);
-        var taskService = new TaskService(activityService); //TODO talvez eu passe o personService como parametro tb, nao sei se da pra utilizar o personservice ja de activity.
+        var taskService = new TaskService(activityService, personService);
 
         this.personController = new PersonController(personService);
         this.activityController = new ActivityController(activityService);

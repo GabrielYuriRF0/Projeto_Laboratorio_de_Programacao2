@@ -2,11 +2,14 @@ package com.sapo.tasks;
 
 import com.sapo.activity.Activity;
 import com.sapo.activity.ActivityService;
+import com.sapo.person.PersonService;
 
 public class TaskService {
     private ActivityService activityService;
-    public TaskService(ActivityService activityService){
+    private PersonService personService;
+    public TaskService(ActivityService activityService, PersonService personService){
         this.activityService = activityService;
+        this.personService = personService;
     }
 
     public String registerTask(Task task, String idActivity){
@@ -69,7 +72,7 @@ public class TaskService {
         String idActivity = idActivityArray[0] + "-" + idActivityArray[1];
         Activity ac = this.activityService.recoverActivity(idActivity);
         TaskRepository tasks = ac.getTasks();
-        tasks.showTask(idTask);
+        return tasks.showTask(idTask,ac);
     }
 
     public void addPersonTask(String cpf, String idTask){
