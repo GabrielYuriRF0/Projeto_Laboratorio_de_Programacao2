@@ -83,9 +83,8 @@ public class Activity {
                 "===\n" +
                 description + "\n" +
                 "===\n" +
-                "Tarefas: ";
-                //todo terminar o toString()
-
+                "Tarefas: " + tasks.countActiveTasks() + "/" + tasks.quantityTasks() + "\n" +
+                taskNameAndId();
     }
 
     public void changeDescription(String newDescription){
@@ -117,5 +116,12 @@ public class Activity {
     }
     public String getDescription(){
         return this.description;
+    }
+    public String taskNameAndId(){
+        String t = "";
+        for (Task task: this.tasks.getTasks().values()){
+            t += " - " + task.getName() + " - " + getId() + "\n";
+        }
+        return t;
     }
 }

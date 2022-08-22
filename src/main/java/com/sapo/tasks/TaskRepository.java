@@ -70,5 +70,7 @@ public class TaskRepository {
         }
         return count;
     }
-
+    public Map<String, Task> getTasks() {
+        return tasks;
+    }
 }
