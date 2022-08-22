@@ -37,15 +37,15 @@ public class ActivityController {
         if(this.activityService.recoverActivity(idActivity).getStatus().equals("STARTED")) {
             this.activityService.disableActivity(idActivity);
         }else{
-            throw new IllegalArgumentException("Invalid Atributte");
+            throw new IllegalStateException("Invalid Operation!");
         }
     }
     public void reopenActivity(String idActivity){
         this.validator.idValidator(idActivity);
-        if(!this.activityService.recoverActivity(idActivity).getStatus().equals("STARTED")) {
+        if(!this.activityService.recoverActivity(idActivity).getStatus().equals("DISABLED")) {
             this.activityService.reopenActivity(idActivity);
         }else{
-            throw new IllegalArgumentException("Invalid Atributte");
+            throw new IllegalStateException("Invalid Operation!");
         }
     }
     public String showActivity(String idActivity){

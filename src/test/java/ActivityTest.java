@@ -61,4 +61,11 @@ public class ActivityTest extends BaseTest {
         facade.concludeActivity(super.idActivity1);
         assertEquals("FINISHED",super.activity1.getStatus());
     }
+    @Test
+    void concludeActivityIsFail(){
+        facade.disableActivity(super.idActivity1);
+        try{
+            facade.concludeActivity(super.idActivity1);
+        }
+    }
 }
