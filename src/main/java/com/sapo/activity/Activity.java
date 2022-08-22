@@ -106,7 +106,6 @@ public class Activity {
     public String getCpf() {
         return cpf;
     }
-
     public int quantityTasks(){
         return this.tasks.size();
     }
