@@ -6,12 +6,14 @@ import java.util.Map;
 
 
 
-public class Task {
+public class Task{
     private String name;
     private int hour;
     private String[] skills;
     private String status;
     private Map<String, String> team; //cpf, name
+
+    private String id;
 
     public Task(String name, String[] skills){
         this.name = name;
@@ -68,6 +70,11 @@ public class Task {
 
     public String getStatus(){
         return this.status;
+    }
+
+    public String generateId(String idActivity, int taskSize){
+        String id = idActivity + "-" + taskSize;
+        return id;
     }
 
 

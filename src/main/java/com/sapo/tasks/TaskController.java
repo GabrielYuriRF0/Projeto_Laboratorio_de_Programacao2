@@ -8,7 +8,7 @@ public class TaskController {
     }
 
     public String registerTask(String idActivity, String name, String[] skills){
-        //TODO implementar e ver a ligação com atividade pra pegar o ip.
+        return this.taskService.registerTask(new Task(name, skills),idActivity);
     }
 
     public void setName(String idTask, String newName){
@@ -36,15 +36,15 @@ public class TaskController {
     }
 
     public String showTask(String idTask){
-        //TODO dps.
+        return this.taskService.showTask(idTask);
     }
 
     public void addPersonTask(String cpf, String idTask){
-        //TODO dps.
+        this.taskService.addPersonTask(cpf,idTask);
     }
 
     public void removePersonTask(String cpf, String idTask){
-        //TODO dps.
+        this.removePersonTask(cpf,idTask);
     }
 
 

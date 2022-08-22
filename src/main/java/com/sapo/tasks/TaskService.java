@@ -1,45 +1,75 @@
 package com.sapo.tasks;
 
+import com.sapo.activity.Activity;
 import com.sapo.activity.ActivityService;
 
 public class TaskService {
-    private TaskRepository taskRepository;
     private ActivityService activityService;
     public TaskService(ActivityService activityService){
-        this.taskRepository = new TaskRepository();
         this.activityService = activityService;
     }
 
-    public String registerTask(Task task){
-        //TODO implementar depois.
+    public String registerTask(Task task, String idActivity){
+        Activity ac = this.activityService.recoverActivity(idActivity);
+        TaskRepository tasks = ac.getTasks();
+        int qntTasksAtividade = tasks.quantityTasks();
+        return tasks.registerTask(task, idActivity, qntTasksAtividade);
     }
 
     public void setName(String idTask, String newName){
-        taskRepository.setName(idTask, newName);
+        String[] idActivityArray = idTask.split("-");
+        String idActivity = idActivityArray[0] + "-" + idActivityArray[1];
+        Activity ac = this.activityService.recoverActivity(idActivity);
+        TaskRepository tasks = ac.getTasks();
+        tasks.setName(idTask, newName);
     }
 
     public void setSkills(String idTask, String[] newSkills){
-        taskRepository.setSkills(idTask, newSkills);
+        String[] idActivityArray = idTask.split("-");
+        String idActivity = idActivityArray[0] + "-" + idActivityArray[1];
+        Activity ac = this.activityService.recoverActivity(idActivity);
+        TaskRepository tasks = ac.getTasks();
+        tasks.setSkills(idTask, newSkills);
     }
 
     public void addHour(String idTask, int hour){
-        taskRepository.addHour(idTask,hour);
+        String[] idActivityArray = idTask.split("-");
+        String idActivity = idActivityArray[0] + "-" + idActivityArray[1];
+        Activity ac = this.activityService.recoverActivity(idActivity);
+        TaskRepository tasks = ac.getTasks();
+        tasks.addHour(idTask,hour);
     }
 
     public void removeHour(String idTask, int hour){
-        taskRepository.removeHour(idTask, hour);
+        String[] idActivityArray = idTask.split("-");
+        String idActivity = idActivityArray[0] + "-" + idActivityArray[1];
+        Activity ac = this.activityService.recoverActivity(idActivity);
+        TaskRepository tasks = ac.getTasks();
+        tasks.removeHour(idTask,hour);
     }
 
     public void concludeTask(String idTask){
-        taskRepository.concludeTask(idTask);
+        String[] idActivityArray = idTask.split("-");
+        String idActivity = idActivityArray[0] + "-" + idActivityArray[1];
+        Activity ac = this.activityService.recoverActivity(idActivity);
+        TaskRepository tasks = ac.getTasks();
+        tasks.concludeTask(idTask);
     }
 
     public void removeTask(String idTask){
-        taskRepository.removeTask(idTask);
+        String[] idActivityArray = idTask.split("-");
+        String idActivity = idActivityArray[0] + "-" + idActivityArray[1];
+        Activity ac = this.activityService.recoverActivity(idActivity);
+        TaskRepository tasks = ac.getTasks();
+        tasks.removeTask(idTask);
     }
 
     public String showTask(String idTask){
-        //TODO dps.
+        String[] idActivityArray = idTask.split("-");
+        String idActivity = idActivityArray[0] + "-" + idActivityArray[1];
+        Activity ac = this.activityService.recoverActivity(idActivity);
+        TaskRepository tasks = ac.getTasks();
+        tasks.showTask(idTask);
     }
 
     public void addPersonTask(String cpf, String idTask){

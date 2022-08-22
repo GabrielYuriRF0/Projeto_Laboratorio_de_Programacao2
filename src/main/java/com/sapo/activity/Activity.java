@@ -4,6 +4,7 @@ import com.sapo.person.Person;
 import com.sapo.person.PersonRepository;
 import com.sapo.tasks.Task;
 import com.sapo.tasks.TaskRepository;
+import com.sapo.tasks.TaskService;
 
 import java.util.*;
 
@@ -107,7 +108,8 @@ public class Activity {
     public String getCpf() {
         return cpf;
     }
-    public int quantityTasks(){
-        return this.tasks.size();
+
+    public TaskRepository getTasks(){
+        return this.tasks;
     }
 }

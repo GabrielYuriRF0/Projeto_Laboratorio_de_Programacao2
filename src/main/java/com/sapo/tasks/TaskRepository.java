@@ -9,8 +9,10 @@ public class TaskRepository {
     public TaskRepository(){
         this.tasks = new HashMap<>();
     }
-    public String RegisterTask(Task task){
-        //TODO dps.
+    public String registerTask(Task task, String idActivity, int taskSize){
+        String idTask = task.generateId(idActivity,taskSize);
+        tasks.put(idTask,task);
+        return idTask;
     }
 
     public void setName(String idTask, String newName){
@@ -35,7 +37,7 @@ public class TaskRepository {
 
     public void removeTask(String idTask){
         tasks.get(idTask).removeTask();
-        tasks.remove(idTask); //TODO analisar para ver qual a melhor situação.
+        tasks.remove(idTask);
     }
     public String showTask(String idTask){
         //TODO ver o tostring depois.
@@ -47,5 +49,9 @@ public class TaskRepository {
 
     public void removerPersonTask(String idTask, String cpf){
         //TODO DEPOIS.
+    }
+
+    public int quantityTasks(){
+        return this.tasks.size();
     }
 }
