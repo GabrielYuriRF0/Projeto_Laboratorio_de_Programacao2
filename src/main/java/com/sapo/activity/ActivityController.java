@@ -42,7 +42,7 @@ public class ActivityController {
     }
     public void reopenActivity(String idActivity){
         this.validator.idValidator(idActivity);
-        if(!this.activityService.recoverActivity(idActivity).getStatus().equals("DISABLED")) {
+        if(!this.activityService.recoverActivity(idActivity).getStatus().equals("STARTED")) {
             this.activityService.reopenActivity(idActivity);
         }else{
             throw new IllegalStateException("Invalid Operation!");
