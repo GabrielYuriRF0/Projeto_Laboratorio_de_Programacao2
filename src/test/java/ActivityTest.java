@@ -67,5 +67,30 @@ public class ActivityTest extends BaseTest {
         try{
             facade.concludeActivity(super.idActivity1);
         }
+        catch (IllegalStateException e){
+            assertEquals("Invalid Operation!", e.getMessage());
+        }
+    }
+
+    @Test
+    void disableActivityIsDone(){
+        facade.disableActivity(super.idActivity1);
+        assertEquals("DISABLED",super.activity1.getStatus());
+    }
+
+    @Test
+    void disableActivityIsFail1(){
+        facade.concludeActivity(idActivity1);
+        try{
+            facade.disableActivity(super.idActivity1);
+        }
+        catch (IllegalStateException e){
+            assertEquals("Invalid Operation!", e.getMessage());
+        }
+    }
+
+    @Test
+    void disableActivityIsFail2(){
+
     }
 }

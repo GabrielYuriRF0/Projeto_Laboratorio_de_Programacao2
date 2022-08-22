@@ -29,7 +29,7 @@ public class ActivityController {
         if(this.activityService.recoverActivity(idActivity).getStatus().equals("STARTED")){
             this.activityService.concludeActivity(idActivity);
         }else{
-            throw new IllegalArgumentException("Invalid Atributte");
+            throw new IllegalStateException("Invalid Operation!");
         }
     }
     public void disableActivity(String idActivity){
