@@ -45,12 +45,12 @@ public class TaskRepository {
         return tasks.get(idTask).toString(activity);
     }
 
-    public void addPersonTask(String idTask){
-        //TODO DEPOIS.
+    public void addPersonTask(String idTask, String cpf, String name){
+        tasks.get(idTask).addPersonTask(cpf,name);
     }
 
-    public void removerPersonTask(String idTask, String cpf){
-        //TODO DEPOIS.
+    public void removePersonTask(String idTask, String cpf){
+        tasks.get(idTask).removePersonTask(cpf);
     }
 
     public int quantityTasks(){

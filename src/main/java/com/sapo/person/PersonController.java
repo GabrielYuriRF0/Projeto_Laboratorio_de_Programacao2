@@ -9,6 +9,7 @@ public class PersonController {
 
     public PersonController(PersonService personService){
         this.personService = personService;
+        this.personValidator = new PersonValidator();
     }
 
     public void registerPerson(String cpf, String name, String[] skills){

@@ -1,6 +1,7 @@
 package com.sapo.activity;
 
 
+import com.sapo.person.Person;
 import com.sapo.person.PersonService;
 import com.sapo.validator.ActivityValidator;
 import com.sapo.validator.PersonValidator;
@@ -12,6 +13,8 @@ public class ActivityController {
 
     public ActivityController(ActivityService activityService){
         this.activityService = activityService;
+        this.validator = new ActivityValidator();
+        this.personValidator = new PersonValidator();
     }
 
     public String registerActivity(String name, String description, String cpf){
@@ -70,5 +73,8 @@ public class ActivityController {
     public String getResponsableName(String idActivity){
         this.validator.idValidator(idActivity);
         return this.activityService.getResponsableName(idActivity);
+    }
+    public Activity getActivity(String idActivity){
+        return this.activityService.recoverActivity(idActivity);
     }
 }

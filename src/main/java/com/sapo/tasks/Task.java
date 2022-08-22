@@ -79,14 +79,12 @@ public class Task{
         return exibir;
     }
 
-    public void addPersonTask(String cpf){
-        this.team.put(cpf,cpf);
-        //TODO implementar depois que fizer repositorio,service e controller.
+    public void addPersonTask(String cpf, String name){
+        this.team.put(cpf,name);
     }
 
     public void removePersonTask(String cpf){
         this.team.remove(cpf);
-        //TODO implementar depois que fizer repositorio,service e controller ---- MAS ACHO QUE ESTÁ CERTO.
     }
 
     public String getStatus(){
@@ -99,5 +97,11 @@ public class Task{
         return id;
     }
 
+    public String getName(){
+        return this.name;
+    }
+    public String[] getSkills(){
+        return this.skills;
+    }
 
 }

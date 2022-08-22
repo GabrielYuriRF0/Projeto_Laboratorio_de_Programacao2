@@ -61,6 +61,7 @@ public class Facade {
     public Person getPerson(String cpf){
         return this.personController.getPerson(cpf);
     }
+
     //Metódos de activityController
     public String registerActivity(String name, String description, String cpf){
         return this.activityController.registerActivity(name, description, cpf);
@@ -85,6 +86,9 @@ public class Facade {
     }
     public String getResponsableName(String idActivity){
         return this.activityController.getResponsableName(idActivity);
+    }
+    public Activity getActivity(String idActivity){
+        return this.activityController.getActivity(idActivity);
     }
 
     //---------------------------------------------TASK-------------------------------------------------------------
