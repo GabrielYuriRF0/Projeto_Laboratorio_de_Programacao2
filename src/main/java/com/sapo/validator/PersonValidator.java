@@ -16,14 +16,11 @@ public class PersonValidator extends Validator  {
 
     public void cpfValidator(String cpf){
         //FIXME rever implementacao;
-        if(cpf.isEmpty()){
-            throw new IllegalArgumentException("Invalid cpf!");
-        }
-        /*CPFValidator cpfValidator = new CPFValidator();
+        CPFValidator cpfValidator = new CPFValidator();
         cpfValidator.assertValid(cpf);
         List<ValidationMessage> erros = cpfValidator.invalidMessagesFor(cpf);
         if(erros.isEmpty() == false){
             throw new IllegalArgumentException("Invalid cpf!");
-        }*/
+        }
     }
 }
