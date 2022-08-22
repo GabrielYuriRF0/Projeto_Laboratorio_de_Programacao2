@@ -104,4 +104,7 @@ public class Task{
         return this.skills;
     }
 
+    public String getId() {
+        return id;
+    }
 }

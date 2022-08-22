@@ -60,4 +60,15 @@ public class TaskRepository {
     public Task getTask(String idTask){
         return this.tasks.get(idTask);
     }
+
+    public int countActiveTasks(){
+        int count = 0;
+        for(Task task: this.tasks.values()){
+            if(task.getStatus().equals("STARDED")){
+                count++;
+            }
+        }
+        return count;
+    }
+
 }
