@@ -1,7 +1,12 @@
 import com.sapo.Facade;
+import com.sapo.activity.ActivityController;
+import com.sapo.person.Person;
+import com.sapo.person.PersonController;
+import com.sapo.tasks.TaskController;
 import org.junit.jupiter.api.BeforeEach;
 
 class BaseTest {
+    protected Facade facade;
     protected final String name1 = "Gabriel";
     protected final String cpf1 = "357.672.271-87";
     protected final String[] skills1 = {"Estudante","Desenvolvedor"};
@@ -15,11 +20,11 @@ class BaseTest {
 
     protected final String nameTask = "Tarefa de composicao";
     protected final String[] skillsTask = {"Professor, Objeto"};
-    protected Facade facade;
+
     @BeforeEach
     void setUp(){
         this.facade = new Facade();
-        facade.registerPerson(name1, cpf1, skills1);
+        facade.registerPerson(cpf1,name1, skills1);
     }
 
 }

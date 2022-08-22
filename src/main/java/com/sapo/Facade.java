@@ -7,6 +7,7 @@ import com.sapo.person.Commentary;
 import com.sapo.person.Person;
 import com.sapo.person.PersonController;
 import com.sapo.person.PersonService;
+import com.sapo.tasks.Task;
 import com.sapo.tasks.TaskController;
 import com.sapo.tasks.TaskService;
 
@@ -132,7 +133,6 @@ public class Facade {
     public void removePersonTask(String cpf, String idTask){
         this.taskController.removePersonTask(cpf, idTask);
     }
-
 
 
 }
