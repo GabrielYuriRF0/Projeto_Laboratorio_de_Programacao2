@@ -16,7 +16,6 @@ public class PersonValidator extends Validator  {
     }
 
     public void cpfValidator(String cpf){
-        //FIXME rever implementacao;
         CPFValidator cpfValidator = new CPFValidator();
         cpfValidator.assertValid(cpf);
     }

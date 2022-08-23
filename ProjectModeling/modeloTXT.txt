@@ -17,8 +17,6 @@ composes Commentary
 + getName():str
 ---
 
-
-
 Commentary
 ---
 - currentDate:Date
@@ -44,6 +42,7 @@ aggregates Person
 + addComments(cpf:str, description:str, author:str):void
 + showComments(cpf:str):str
 + getName(cpf:str):str
++ getPerson(cpf:str):Person
 ---
 
 PersonService
@@ -60,6 +59,7 @@ composes PersonRepository
 + addComments(cpf:str, description:str, author:str):void
 + showComments(cpf:str):str
 + getName(cpf:str):str
++ getPerson(cpf:str):Person
 
 ---
 
@@ -79,6 +79,7 @@ association PersonValidator
 + addComments(cpf:str, description:str, author:str):void
 + showComments(cpf:str):str
 + getName(cpf:str):str
++ getPerson(cpf:str):Person
 
 ---
 
@@ -117,6 +118,7 @@ aggregates Activity
 + changeDescription(idActivity:str, newDescription:Str):void
 + changeResponsable(idActivity:str, cpf:Str):void
 + getResponsableName(idActivity:str):str
++ getActivity(idActivity:str):Activity
 ---
 
 ActivityService
@@ -135,6 +137,7 @@ composes PersonService
 + changeDescription(idActivity:str, newDescription:Str):void
 + changeResponsable(idActivity:str, cpf:Str):void
 + getResponsableName(idActivity:str):str
++ getActivity(idActivity:str):Activity
 ---
 
 
@@ -153,6 +156,7 @@ composes ActivityService
 + changeDescription(idActivity:str, newDescription:Str):void
 + changeResponsable(idActivity:str, cpf:Str):void
 + getResponsableName(idActivity:str):str
++ getActivity(idActivity:str):Activity
 ---
 
 Task
@@ -191,16 +195,17 @@ aggregates Task
 + showTask(idTask:str):void
 + addPersonTask(cpf:str,idTask:str):void
 + removerPersonTask(cpf:str, idTask:str):void
++ getTask(idTask:str):Task
 ---
 
 TaskService
-composes TaskRepository
 association ActivityService
+association PersonService
 ---
-- taskRepository:TaskRepository
 - activityService: ActivityService
+- personService: PersonService
 ---
-+ TaskService(activityService:ActivityService)
++ TaskService(activityService:ActivityService, personService:PersonService)
 + RegisterTask(task:Task):str
 + setName(idTask:str, newName:str):void
 + setSkills(idTask:str, newSkills:str[]):void
@@ -211,6 +216,7 @@ association ActivityService
 + showTask(idTask:str):void
 + addPersonTask(cpf:str,idTask:str):void
 + removerPersonTask(cpf:str, idTask:str):void
++ getTask(idTask:str):Task
 ---
 
 TaskController
@@ -218,7 +224,7 @@ composes TaskService
 ---
 - taskService:TaskService
 ---
-+ TaskController()
++ TaskController(taskService:TaskService)
 + RegisterTask(idActivity:str, name:str, skills:str[]):str
 + setName(idTask:str, newName:str):void
 + setSkills(idTask:str, newSkills:str[]):void
@@ -229,13 +235,16 @@ composes TaskService
 + showTask(idTask:str):void
 + addPersonTask(cpf:str,idTask:str):void
 + removerPersonTask(cpf:str, idTask:str):void
++ getTask(idTask:str):Task
 ---
 
-Validator 
+Validator
 //Abstract class
 ---
 ---
-+ generalValidate():void //IllegalArgumentException
++ Validator()
++ validateGeneralString():void //IllegalArgumentException
++ generalValidateStringArray(array:str[]):void
 ---
 
 PersonValidator
@@ -243,7 +252,7 @@ extends Validator
 ---
 ---
 + PersonValidator()
-+ generalValidator(cpf:str, name:str, skills:str):void
++ generalValidate(cpf:str, name:str, skills:str):void
 + cpfValidator(cpf:str):void
 ---
 
@@ -262,11 +271,12 @@ composes TaskController
 + registerPerson(cpf:str, name:str, skills:str[]):void
 + removePerson(cpf:str):void
 + showPerson(cpf:str):str
-+ changeName(cpf:str, newName:str):void
-+ changeSkills(cpf:str, newSkills:str[]):void
-+ addComments(cpf:str, description:str, author:str):void
++ setPersonName(cpf:str, newName:str):void
++ setPersonSkills(cpf:str, newSkills:str[]):void
++ registerComments(cpf:str, description:str, authorCpf:str):void
 + showComments(cpf:str):str
-+ getName(cpf:str):str
++ getPersonName(cpf:str):str
++ getPerson(cpf:str):Person
 
 //Referente a Activity
 + registerActivity(name:str, description:str, cpf:str):void
@@ -277,6 +287,7 @@ composes TaskController
 + changeDescription(idActivity:str, newDescription:Str):void
 + changeResponsable(idActivity:str, cpf:Str):void
 + getResponsableName(idActivity:str):str
++ getActivity(idActivity:str):Activity
 
 //Referente a Task
 + RegisterTask(idActivity:str, name:str, skills:str[]):str
@@ -289,6 +300,7 @@ composes TaskController
 + showTask(idTask:str):void
 + addPersonTask(cpf:str,idTask:str):void
 + removerPersonTask(cpf:str, idTask:str):void
++ getTask(idTask:str):Task
 ---
 
 
