@@ -64,4 +64,8 @@ public class Person{
         return this.name;
     }
 
+    public String[] getSkills(){
+        return this.skills;
+    }
+
 }

@@ -12,7 +12,7 @@ abstract class Validator {
     }
 
     public void generalValidateStringArray(String[] attribute){
-        if(attribute.equals(null)){
+        if(attribute == null){
             throw new IllegalArgumentException("Empty or null attribute!");
 
         }

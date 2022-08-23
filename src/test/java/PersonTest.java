@@ -4,20 +4,22 @@ import org.junit.jupiter.api.Test;
 import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 public class PersonTest extends BaseTest{
     @Test
-    void testeCadastroPessoaValido(){
+    void testValidRegisterPerson(){
         var person = facade.getPerson(cpf1);
         assertEquals(cpf1, person.getCpf());
     }
     @Test
-    void testeCadastraPessoaVálidaName(){
+    void testRegisterPersonValidName(){
         facade.registerPerson(cpf1, "jubileu", skills1);
         var pessoa = facade.getPerson(cpf1);
         assertEquals("jubileu", pessoa.getName());
     }
     @Test
-    void testeCadastraPessoaCpfInválidoVazio(){
+    void testRegisterPersonInvalidCpfVoid(){
         try{
             facade.registerPerson("", "Lucas", skills1);
         }catch (Exception e){
@@ -26,7 +28,7 @@ public class PersonTest extends BaseTest{
     }
 
     @Test
-    void testeCadastraPessoaCpfInválidoEspaco(){
+    void testRegisterPersonInvalidCpfSpace(){
         try{
             facade.registerPerson(" ", "Lucas", skills1);
         }catch (Exception e){
@@ -35,7 +37,7 @@ public class PersonTest extends BaseTest{
     }
 
     @Test
-    void testeCadastraPessoaCpfInválidoNull(){
+    void testRegisterPersonInvalidCpfNull(){
         try{
             facade.registerPerson(null, "Lucas", skills1);
         }catch (Exception e){
@@ -44,7 +46,7 @@ public class PersonTest extends BaseTest{
     }
 
     @Test
-    void testeCadastraPessoaNomeInválidoVazio(){
+    void testRegisterPersonInvalidNameVoid(){
         try{
             facade.registerPerson(cpf1, "", skills1);
         }catch (IllegalArgumentException e) {
@@ -53,7 +55,7 @@ public class PersonTest extends BaseTest{
     }
 
     @Test
-    void testeCadastraPessoaNomeInválidoEspaco(){
+    void testRegisterPersonInvalidNameSpace(){
         try{
             facade.registerPerson(cpf1, " ", skills1);
         }catch (IllegalArgumentException e) {
@@ -61,7 +63,7 @@ public class PersonTest extends BaseTest{
         }
     }
     @Test
-    void testeCadastraPessoaNomeInválidoNull(){
+    void testRegisterPersonInvalidNameNull(){
         try{
             facade.registerPerson(cpf1, null, skills1);
         }catch (Exception e) {
@@ -69,7 +71,7 @@ public class PersonTest extends BaseTest{
         }
     }
     @Test
-    void testeCadastraPessoaSkillsInválidas(){
+    void testRegisterPersonInvalidSkills(){
         String[] skill = null;
         try{
             facade.registerPerson(cpf1, "jubileu", skills1);
@@ -80,7 +82,7 @@ public class PersonTest extends BaseTest{
     }
 
     @Test
-    void testeRemovePerson(){
+    void testRemovePerson(){
         facade.removePerson(cpf1);
         try{
             facade.getPerson(cpf1);
@@ -90,7 +92,7 @@ public class PersonTest extends BaseTest{
     }
 
     @Test
-    void testRemovePersonCpfInválido(){
+    void testRemovePersonInvalidCpf(){
         try{
             facade.removePerson("111.111.111-11");
         }catch(Exception e){
@@ -99,7 +101,7 @@ public class PersonTest extends BaseTest{
     }
 
     @Test
-    void testRemovePersonCpfVálidoNaoExiste(){
+    void testRemovePersonValidCpfButNotRegistered(){
         try{
             facade.removePerson("876.178.004-95");
         }catch(NoSuchElementException e){
@@ -116,4 +118,68 @@ public class PersonTest extends BaseTest{
         assertEquals(show1, show);
     }
 
+    @Test
+    void testValidSetPersonName(){
+        facade.setPersonName(cpf1, "Luxuria");
+        var person = facade.getPerson(cpf1);
+        String name = person.getName();
+        assertEquals("Luxuria", name);
+    }
+
+    @Test
+    void testInvalidSetPersonName(){
+        try{
+            facade.setPersonName(cpf1, "");
+        }catch (IllegalArgumentException e){
+            assertEquals("Empty or null attribute!", e.getMessage());
+        }
+    }
+
+    @Test
+    void testSetPersonNameInvalidSpace(){
+        try{
+            facade.setPersonName(cpf1, " ");
+        }catch (IllegalArgumentException e){
+            assertEquals("Empty or null attribute!", e.getMessage());
+        }
+    }
+    @Test
+    void testInvalidSetPersonNameNull(){
+        try{
+            facade.setPersonName(cpf1, null);
+        }catch (IllegalArgumentException e){
+            assertEquals("Null", e.getMessage());
+        }
+    }
+
+    @Test
+    void testValidSetPersonSkills(){
+        facade.setPersonSkills(cpf1,skills2);
+        var pessoa = facade.getPerson(cpf1);
+        assertEquals(skills2,pessoa.getSkills());
+    }
+
+    @Test
+    void testInvalidSetPersonSkills(){
+        try{
+            facade.setPersonSkills(cpf1,null);
+        }catch (IllegalArgumentException e){
+            assertEquals("Empty or null attribute!", e.getMessage());
+        }
+    }
+
+    @Test
+    void testValidGetPersonName(){
+        String name = facade.getPersonName(cpf1);
+        assertEquals(name1, name);
+    }
+
+    @Test
+    void testInvalidGetPersonName(){
+        try{
+            String name = facade.getPersonName("876.178.004-95");
+        } catch(NoSuchElementException e){
+            assertEquals("This cpf is not registered in the system!", e.getMessage());
+        }
+    }
 }
