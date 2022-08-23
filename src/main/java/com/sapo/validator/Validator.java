@@ -3,7 +3,10 @@ package com.sapo.validator;
 abstract class Validator {
 
     public void validateGeneralString(String attribute){
-        if(attribute.isBlank()){
+        if(attribute == null){
+            throw  new IllegalArgumentException("Null");
+        }
+        else if(attribute.isBlank()){
             throw new IllegalArgumentException("Empty or null attribute!");
         }
     }

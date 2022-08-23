@@ -54,9 +54,9 @@ public class PersonTest extends BaseTest{
     @Test
     void testeCadastraPessoaNomeInválidoNull(){
         try{
-            facade.registerPerson(cpf1, "jabicara", skills1);
+            facade.registerPerson(cpf1, null, skills1);
         }catch (Exception e) {
-            assertEquals("Empty or null attribute!", e.getMessage());
+            assertEquals("Null", e.getMessage());
         }
     }
 }

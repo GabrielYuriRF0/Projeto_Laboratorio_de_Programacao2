@@ -13,7 +13,8 @@ public class PersonController {
     }
 
     public void registerPerson(String cpf, String name, String[] skills){
-        personValidator.generalValidate(name, skills);
+        personValidator.validateGeneralString(name);
+        personValidator.generalValidate(skills);
         personValidator.cpfValidator(cpf);
         this.personService.registerPerson(new Person(cpf, name, skills));
     }
