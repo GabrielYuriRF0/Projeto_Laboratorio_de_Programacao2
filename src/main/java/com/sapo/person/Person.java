@@ -21,6 +21,7 @@ public class Person{
     public String toString(){
         SortedSet<String> skills = new TreeSet<String>();
         String formatedSkills = new String();
+        formatedSkills += "\n";
 
         for (String skill : this.skills) {
             skills.add(skill);
