@@ -88,11 +88,17 @@ public class PersonService {
         }else if(this.personRepository.getPerson(CPF).getFunction().equals("TEACHER")){
             int countStarted = 0;
             int countFinished = 0;
-
+            for(Task status: tasks){
+                if()
+            }
         }
         return level;
     }
     public String[] listPeople(){
         return this.personRepository.listPeople();
+    }
+
+    public Map<String, Person> getPeople(){
+        return this.personRepository.getPeople();
     }
 }
