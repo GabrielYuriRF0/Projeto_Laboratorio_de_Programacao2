@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 
-
+//FIXME Rever implementação do adiciona e remove horas
 public class Task{
     private String name;
     private int hour;
