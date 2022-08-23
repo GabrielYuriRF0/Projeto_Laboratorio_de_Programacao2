@@ -20,25 +20,42 @@ public class PersonController {
     }
 
     public void registerTeacher(String CPF, String name, String siape, String[] disciplines, String[] skills){
-
+        personValidator.validateGeneralString(name);
+        personValidator.generalValidate(skills);
+        personValidator.cpfValidator(CPF);
+        personValidator.validateGeneralString(siape);
+        personValidator.generalValidate(disciplines);
+        this.personService.registerPerson(new Teacher(CPF, name, siape, disciplines, skills));
     }
     public void registerStudent(String CPF, String name, String registration, int period, String[] skills){
-
+        personValidator.validateGeneralString(name);
+        personValidator.generalValidate(skills);
+        personValidator.cpfValidator(CPF);
+        personValidator.validateGeneralString(registration);
+        personValidator.periodValidator(period);
+        this.personService.registerPerson(new Student(CPF, name, registration, period, skills));
     }
 
-    public void defineTeacherFunction(String CPF, String siape, String[] discipline){
-
+    public void defineTeacherFunction(String CPF, String siape, String[] disciplines){
+        personValidator.cpfValidator(CPF);
+        personValidator.validateGeneralString(siape);
+        personValidator.generalValidate(disciplines);
+        this.personService.defineTeacherFunction(CPF, siape, disciplines);
     }
 
     public void defineStudentFunction(String CPF, String registration, int period){
-
+        personValidator.cpfValidator(CPF);
+        personValidator.validateGeneralString(registration);
+        personValidator.periodValidator(period);
+        this.personService.defineStudentFuncion(CPF, registration, period);
     }
 
     public int getLevel(String CPF){
-        return 0;
+        personValidator.cpfValidator(CPF);
+        return this.personService.getLevel(CPF);
     }
     public String[] listPeople(){
-        return null;
+        return this.personService.listPeople();
     }
     public void removePerson(String cpf){
         personValidator.cpfValidator(cpf);

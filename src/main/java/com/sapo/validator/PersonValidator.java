@@ -19,4 +19,10 @@ public class PersonValidator extends Validator  {
         CPFValidator cpfValidator = new CPFValidator();
         cpfValidator.assertValid(cpf);
     }
+
+    public void periodValidator(int period){
+        if(period < 0){
+            throw new IllegalArgumentException("invalid period");
+        }
+    }
 }
