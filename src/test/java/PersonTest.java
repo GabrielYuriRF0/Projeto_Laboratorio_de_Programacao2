@@ -182,4 +182,47 @@ public class PersonTest extends BaseTest{
             assertEquals("This cpf is not registered in the system!", e.getMessage());
         }
     }
+
+    @Test
+    void testValidRegisterComments(){
+        facade.registerComments(cpf1, "Que dia maravilhoso", cpf2);
+        assertEquals("-Que dia maravilhoso" + "(" + name2 + ")" + "\n", facade.showComments(cpf1));
+    }
+
+    @Test
+    void testRegisterCommentsInvalidCpfVoid(){
+        try{
+            facade.registerComments(cpf1, "La pelota", "" );
+        }catch(Exception e){
+            assertEquals("Validation errors: [CPFError : INVALID DIGITS]", e.getMessage());
+        }
+    }
+
+    @Test
+    void testRegisterCommentsInvalidCpfSpace(){
+        try{
+            facade.registerComments(cpf1, "La pelota", " " );
+        }catch(Exception e){
+            assertEquals("Validation errors: [CPFError : INVALID DIGITS]", e.getMessage());
+        }
+    }
+
+    @Test
+    void testRegisterCommentsInvalidCpfNull(){
+        try{
+            facade.registerComments(cpf1, "La pelota", null );
+        }catch(Exception e){
+            assertEquals("This cpf is not registered in the system!", e.getMessage());
+        }
+    }
+
+    @Test
+    void testRegisterCommentsInvalidCpfNotRegistered(){
+        try{
+            facade.registerComments(cpf1, "La pelota", "876.178.004-95" );
+        }catch(NoSuchElementException e){
+            assertEquals("This cpf is not registered in the system!", e.getMessage());
+        }
+    }
+
 }

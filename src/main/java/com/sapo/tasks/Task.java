@@ -38,8 +38,12 @@ public class Task{
     }
 
     public void removeHour(int hours){
-        //TODO validacao caso hora seja negativa.
-        this.hour -= hours;
+        if(this.hour - hours < 0){
+            throw new IllegalStateException("Number of hours cannot be negative");
+        }
+        else{
+            this.hour -= hours;
+        }
     }
 
     public void concludeTask(){
