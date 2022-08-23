@@ -1,10 +1,21 @@
 package com.sapo.person;
 
+import com.sapo.activity.Activity;
+import com.sapo.activity.ActivityRepository;
+import com.sapo.activity.ActivityService;
+import com.sapo.tasks.Task;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 public class PersonService {
     private PersonRepository personRepository;
+    private ActivityService activityService;
 
-    public PersonService(){
+    public PersonService(ActivityService activityService){
         this.personRepository = new PersonRepository();
+        this.activityService = activityService;
     }
 
     public void registerPerson(Person person){
@@ -44,19 +55,44 @@ public class PersonService {
     }
 
     public void defineTeacherFunction(String cpf, String siape, String[] disciplines){
-
+        this.personRepository.defineTeacherFunction(cpf, siape, disciplines);
     }
-    public void defineStudentFuncion(String cpf, String registration, int period){
-
+    public void defineStudentFunction(String cpf, String registration, int period){
+        this.personRepository.defineStudentFunction(cpf, registration, period);
     }
     public void removeFunction(String CPF){
-
+        this.personRepository.removeFunction(CPF);
     }
-    public int getLevel(String CPF){
-        return 0;
-    }
+    public float getLevel(String CPF){
+        Map<String, Activity> ac = this.activityService.getActivities();
+        String[] personSkills = this.personRepository.getPerson(CPF).getSkills();
+        float level = 0;
+        List<Task> tasks = new ArrayList<>();
+        for(Activity a: ac.values()){
+            if(a.getCpf().equals(CPF)){
+                tasks.addAll(a.getTasks().getTasks().values());
+            }
+        }
 
+        if(this.personRepository.getPerson(CPF).getFunction().equals("NO FUNCTION")){
+            int countStarted = 0;
+            int countFinished = 0;
+            for(Task status: tasks){
+                if(status.getStatus().equals("STARTED")){
+                    countStarted++;
+                } else if (status.getStatus().equals("FINISHED")) {
+                    countFinished++;
+                }
+            }
+            level = (float) (Math.floor(countStarted/2) + countFinished);
+        }else if(this.personRepository.getPerson(CPF).getFunction().equals("TEACHER")){
+            int countStarted = 0;
+            int countFinished = 0;
+
+        }
+        return level;
+    }
     public String[] listPeople(){
-        return null;
+        return this.personRepository.listPeople();
     }
 }

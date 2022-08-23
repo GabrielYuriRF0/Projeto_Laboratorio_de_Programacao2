@@ -1,5 +1,7 @@
 package com.sapo.person;
 
+import com.sapo.activity.Activity;
+
 import java.util.ArrayList;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -11,6 +13,8 @@ public class Person{
     protected ArrayList<Commentary> comments;
     protected float level;
     protected String function;
+    protected ArrayList<Activity> activities;
+
 
 
     public Person(String cpf, String name, String[] skills){
@@ -70,8 +74,27 @@ public class Person{
     public String[] getSkills(){
         return this.skills;
     }
-    public int calculateLevel(){
+    public float calculateLevel(){
+        float level = 0;
+        if(this.function.equals("NO FUNCTION")){
+
+        }
         return 0;
     }
 
+    public float getLevel() {
+        return level;
+    }
+
+    public String getFunction() {
+        return function;
+    }
+
+    public void setFunction(String function) {
+        this.function = function;
+    }
+
+    public void setActivities(Activity activities) {
+        this.activities.add(activities);
+    }
 }

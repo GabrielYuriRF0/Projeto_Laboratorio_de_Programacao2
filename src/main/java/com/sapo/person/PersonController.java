@@ -47,15 +47,20 @@ public class PersonController {
         personValidator.cpfValidator(CPF);
         personValidator.validateGeneralString(registration);
         personValidator.periodValidator(period);
-        this.personService.defineStudentFuncion(CPF, registration, period);
+        this.personService.defineStudentFunction(CPF, registration, period);
     }
 
-    public int getLevel(String CPF){
+    public float getLevel(String CPF){
         personValidator.cpfValidator(CPF);
         return this.personService.getLevel(CPF);
     }
     public String[] listPeople(){
         return this.personService.listPeople();
+    }
+
+    public void removeFunction(String CPF){
+        personValidator.cpfValidator(CPF);
+        this.personService.removeFunction(CPF);
     }
     public void removePerson(String cpf){
         personValidator.cpfValidator(cpf);
@@ -98,6 +103,4 @@ public class PersonController {
         //TODO validação.
         return this.personService.getPerson(cpf);
     }
-
-
 }

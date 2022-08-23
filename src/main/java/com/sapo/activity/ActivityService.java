@@ -2,6 +2,8 @@ package com.sapo.activity;
 
 import com.sapo.person.PersonService;
 
+import java.util.Map;
+
 public class ActivityService {
     private ActivityRepository activityRepository;
     private PersonService personService;
@@ -45,5 +47,9 @@ public class ActivityService {
 
     public Activity recoverActivity(String idActivity){
         return this.activityRepository.recoverActivity(idActivity);
+    }
+
+    public Map<String, Activity> getActivities(){
+        return this.activityRepository.getActivities();
     }
 }

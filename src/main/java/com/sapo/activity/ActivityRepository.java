@@ -74,4 +74,8 @@ public class ActivityRepository {
             throw new NoSuchElementException("Activity do not registered in the repository");
         }
     }
+
+    public Map<String, Activity> getActivities() {
+        return activities;
+    }
 }

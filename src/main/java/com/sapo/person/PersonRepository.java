@@ -1,5 +1,7 @@
 package com.sapo.person;
 
+import com.sapo.activity.Activity;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
@@ -63,26 +65,37 @@ public class PersonRepository {
         return this.people.get(cpf);
     }
 
-    public String getFunction(){
-        return "";
+    public String getFunction(String CPF){
+        checkRegistration(CPF);
+        return this.people.get(CPF).getFunction();
     }
     public void defineTeacherFunction(String CPF, String siape, String[] disciplines){
-
+        checkRegistration(CPF);
+        this.people.put(CPF, new Teacher(CPF, this.people.get(CPF).getName(), siape, this.people.get(CPF).getSkills(), disciplines));
+        this.people.get(CPF).setFunction("TEACHER");
     }
 
     public void defineStudentFunction(String CPF, String registration, int period){
-
+        checkRegistration(CPF);
+        this.people.put(CPF, new Student(CPF, this.people.get(CPF).getName(), registration, period, this.people.get(CPF).getSkills()));
+        this.people.get(CPF).setFunction("STUDENT");
     }
 
     public void removeFunction(String CPF){
-
+        checkRegistration(CPF);
+        this.people.get(CPF).setFunction("NO FUNCTION");
     }
 
-    public int getLevel(String CPF){
+    public float getLevel(String CPF){
+        checkRegistration(CPF);
         return 0;
     }
 
     public String[] listPeople(){
         return null;
+    }
+
+    public Map<String, Person> getPeople(){
+        return this.people;
     }
 }
