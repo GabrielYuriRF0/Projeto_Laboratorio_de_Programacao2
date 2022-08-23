@@ -8,6 +8,7 @@ import java.util.List;
 public class PersonValidator extends Validator  {
 
     public void generalValidate(String name,String[] skills) {
+
         if(skills == null){
             throw new IllegalArgumentException("Empty or null attribute!");
         }

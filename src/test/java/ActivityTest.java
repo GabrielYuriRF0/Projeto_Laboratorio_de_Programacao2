@@ -183,8 +183,50 @@ public class ActivityTest extends BaseTest {
 
     @Test
     void changeActivityResponsableIsFailsInvalidCpf(){
-
+        try{
+            facade.changeResponsable(super.idActivity1,"111.111.155-44");
+        }
+        catch (Exception e){
+            assertEquals("Validation errors: [CPFError : INVALID CHECK DIGITS]", e.getMessage());
+        }
     }
+
+    @Test
+    void changeActivityResponsableIsFailsInexistentCpf(){
+        try{
+            facade.changeResponsable(super.idActivity1,"520.466.484-04");
+        }
+        catch (NoSuchElementException e){
+            assertEquals("This cpf is not registered in the system!", e.getMessage());
+        }
+    }
+
+    @Test
+    void getResponsableNameIsDone(){
+        assertEquals("Lucas",facade.getResponsableName(super.idActivity1));
+    }
+
+    @Test
+    void getResponsanbleNameIsFailInvalidID(){
+        try{
+            facade.getResponsableName("Idinvalido");
+        }
+        catch (IllegalArgumentException e){
+            assertEquals("Invalid ID", e.getMessage());
+
+        }
+    }
+
+    @Test
+    void getResponsanbleNameIsFailInexistentID(){
+        try{
+            facade.getResponsableName("STD-2");
+        }
+        catch (NoSuchElementException e){
+            assertEquals("Activity do not registered in the repository", e.getMessage());
+        }
+    }
+
 
 
 }
