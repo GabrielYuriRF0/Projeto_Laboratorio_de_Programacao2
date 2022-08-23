@@ -74,7 +74,7 @@ public class Task{
         String exibir = this.name + " " + "-" + " "+ this.id + "\n"
                 + "-" + " " + activity.getName() + "\n"
                 + skills + "\n"
-                + "(" + this.hour + "horas(s) executada(s))" + "\n"
+                + "(" + this.hour + " horas(s) executada(s))" + "\n"
                 + "===" + "\n"
                 + activity.getDescription() + "\n"
                 + "===" + "\n"
@@ -108,7 +108,15 @@ public class Task{
         return this.skills;
     }
 
+    public int getHour() {
+        return hour;
+    }
+
     public String getId() {
         return id;
+    }
+
+    public Map<String, String> getTeam() {
+        return team;
     }
 }
