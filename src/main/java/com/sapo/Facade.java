@@ -7,23 +7,35 @@ import com.sapo.person.Commentary;
 import com.sapo.person.Person;
 import com.sapo.person.PersonController;
 import com.sapo.person.PersonService;
+import com.sapo.search.SearchController;
+import com.sapo.search.SearchService;
+import com.sapo.tasks.ManageTaskService;
 import com.sapo.tasks.Task;
 import com.sapo.tasks.TaskController;
 import com.sapo.tasks.TaskService;
+
+import java.util.List;
 
 public class Facade {
 
     private PersonController personController;
     private ActivityController activityController;
     private TaskController taskController;
+    private SearchController searchController;
+    private ManageTaskController manageTaskController;
+
     public Facade(){
         var personService = new PersonService();
         var activityService = new ActivityService(personService);
         var taskService = new TaskService(activityService, personService);
+        var searchService = new SearchService(personService,activityService,taskService);
+        var manageTaskService = new ManageTaskService(activityService);
 
         this.personController = new PersonController(personService);
         this.activityController = new ActivityController(activityService);
         this.taskController = new TaskController(taskService);
+        this.searchController = new SearchController(searchService);
+        this.manageTaskController = new ManageTaskController(manageTaskService);
         //ATÉ ENTAO TA CERTO.
     }
 
@@ -137,5 +149,33 @@ public class Facade {
     public Task getTask(String idTask){
         return this.taskController.getTask(idTask);
     }
+    //Métodos de SearchController
 
+    public List<String> searchPerson(String terms){
+        return this.searchController.searchPerson(terms);
+    }
+
+    public List<String> searchActivity(String terms){
+        return this.searchController.searchActivity(terms);
+    }
+
+    public List<String> searchTask(String name){
+        return this.searchController.searchTask(name);
+    }
+
+    public List<String> searchTask(String idActivity, String name){
+        return this.searchController.searchTask(idActivity,name);
+    }
+
+    public List<String> sugestTasks(String cpf){
+        return this.searchController.sugestTasks(cpf);
+    }
+
+    public List<String> recentSearch(int searchNumbers){
+        return this.searchController.recentSearch(searchNumbers);
+    }
+
+    public List<String> showSearchHistoric(int searchId){
+        return this.searchController.showSearchHistoric(searchId);
+    }
 }
