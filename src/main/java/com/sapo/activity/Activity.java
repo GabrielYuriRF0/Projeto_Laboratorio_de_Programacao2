@@ -131,4 +131,10 @@ public class Activity {
         }
         return t;
     }
+
+    public ManageTaskRepository getmanageTaskRepository(){
+        return this.manageTasks;
+    }
+
+
 }

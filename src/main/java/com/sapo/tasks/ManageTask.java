@@ -9,18 +9,18 @@ public class ManageTask {
     private String name;
     private String status;
     private int hours;
-    private HashSet<String>  skills;
-    private Map<String, String> team;
+    private HashSet<String> skills;
+    private String[] team;
     private Map<String, Task> tasks;
 
-    //FIXME Implementar a geração do team, horas e ID.
-    public ManageTask(String name,HashSet<String> skills){
+    //FIXME Implementar a geração do team.
+    public ManageTask(String name, HashSet<String> skills, int hours, String[] team){
         this.name = name;
         this.skills = skills;
+        this.hours = hours;
         this.status = "STARTED";
+        this.team = team;
         this.tasks = new HashMap<>();
-        this.tasks = new HashMap<>();
-
     }
 
     public void registerTask(Task task){

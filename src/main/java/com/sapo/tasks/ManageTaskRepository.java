@@ -37,5 +37,9 @@ public class ManageTaskRepository {
         }
     }
 
+    public Map<String, ManageTask> getManageTaskRepository(){
+        return this.manageTasks;
+    }
+
 
 }
