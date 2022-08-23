@@ -5,10 +5,12 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 public class Person{
-    private String cpf;
-    private String name;
-    private String[] skills;
-    private ArrayList<Commentary> comments;
+    protected String cpf;
+    protected String name;
+    protected String[] skills;
+    protected ArrayList<Commentary> comments;
+    protected float level;
+    protected String function;
 
 
     public Person(String cpf, String name, String[] skills){
@@ -67,6 +69,9 @@ public class Person{
 
     public String[] getSkills(){
         return this.skills;
+    }
+    public int calculateLevel(){
+        return 0;
     }
 
 }

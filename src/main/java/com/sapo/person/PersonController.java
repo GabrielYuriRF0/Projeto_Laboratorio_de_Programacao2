@@ -19,6 +19,27 @@ public class PersonController {
         this.personService.registerPerson(new Person(cpf, name, skills));
     }
 
+    public void registerTeacher(String CPF, String name, String siape, String[] disciplines, String[] skills){
+
+    }
+    public void registerStudent(String CPF, String name, String registration, int period, String[] skills){
+
+    }
+
+    public void defineTeacherFunction(String CPF, String siape, String[] discipline){
+
+    }
+
+    public void defineStudentFunction(String CPF, String registration, int period){
+
+    }
+
+    public int getLevel(String CPF){
+        return 0;
+    }
+    public String[] listPeople(){
+        return null;
+    }
     public void removePerson(String cpf){
         personValidator.cpfValidator(cpf);
         this.personService.removePerson(cpf);
@@ -60,4 +81,6 @@ public class PersonController {
         //TODO validação.
         return this.personService.getPerson(cpf);
     }
+
+
 }

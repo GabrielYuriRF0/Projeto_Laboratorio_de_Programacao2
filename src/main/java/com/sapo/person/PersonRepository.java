@@ -63,4 +63,26 @@ public class PersonRepository {
         return this.people.get(cpf);
     }
 
+    public String getFunction(){
+        return "";
+    }
+    public void defineTeacherFunction(String CPF, String siape, String[] disciplines){
+
+    }
+
+    public void defineStudentFunction(String CPF, String registration, int period){
+
+    }
+
+    public void removeFunction(String CPF){
+
+    }
+
+    public int getLevel(String CPF){
+        return 0;
+    }
+
+    public String[] listPeople(){
+        return null;
+    }
 }

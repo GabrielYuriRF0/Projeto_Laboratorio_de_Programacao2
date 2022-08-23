@@ -42,4 +42,21 @@ public class PersonService {
     public Person getPerson(String cpf){
         return this.personRepository.getPerson(cpf);
     }
+
+    public void defineTeacherFunction(String cpf, String siape, String[] disciplines){
+
+    }
+    public void defineStudentFuncion(String cpf, String registration, int period){
+
+    }
+    public void removeFunction(String CPF){
+
+    }
+    public int getLevel(String CPF){
+        return 0;
+    }
+
+    public String[] listPeople(){
+        return null;
+    }
 }
