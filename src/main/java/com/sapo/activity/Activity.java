@@ -37,15 +37,15 @@ public class Activity {
         //tirando vogais e espaços vazios e transformando para maiusculo
         for (int i = 0; i < letters.length; i++) {
             if (!vowelsAndNumbers.contains(letters[i]) ) {
-                consonants.append(Character.toString(i).toUpperCase());
-            };
+                consonants.append(Character.toString(letters[i]).toUpperCase());
+            }
         }
 
         if(consonants.length() < 3){
             for(int i = 0; i < consonants.length();i++){
                 result.append(consonants.charAt(i));
             }
-            for(int i = consonants.length(); i <= 3; i++){
+            for(int i = consonants.length(); i < 3; i++){
                 result.append("X");
             }
         }else{
@@ -119,8 +119,15 @@ public class Activity {
     }
     public String taskNameAndId(){
         String t = "";
+        int count = 0;
         for (Task task: this.tasks.getTasks().values()){
-            t += " - " + task.getName() + " - " + getId() + "\n";
+            if(count == 3){
+                break;
+            }
+            if(task.getStatus().equals("STARTED")){
+                t += " - " + task.getName() + " - " + getId() + "\n";
+            }
+            count++;
         }
         return t;
     }

@@ -21,7 +21,7 @@ public class Task{
         this.name = name;
         this.skills = skills;
         this.hour = 0;
-        this.status = "STARDED";
+        this.status = "STARTED";
         this.team = new HashMap<>();
     }
 
@@ -43,11 +43,11 @@ public class Task{
     }
 
     public void concludeTask(){
-        if(this.status.equals("STARDED")){
+        if(this.status.equals("STARTED")){
             this.status = "FINISHED";
         }
         else{
-            throw new IllegalStateException("Invalid Operation, the task status isn't STARDED");
+            throw new IllegalStateException("Invalid Operation, the task status isn't STARTED");
         }
     }
 

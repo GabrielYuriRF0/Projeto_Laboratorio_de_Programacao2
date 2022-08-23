@@ -75,7 +75,7 @@ public class TaskRepository {
     public int countActiveTasks(){
         int count = 0;
         for(Task task: this.tasks.values()){
-            if(task.getStatus().equals("STARDED")){
+            if(task.getStatus().equals("STARTED")){
                 count++;
             }
         }
