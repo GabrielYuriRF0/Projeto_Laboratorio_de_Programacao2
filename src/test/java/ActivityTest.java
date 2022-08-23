@@ -122,7 +122,7 @@ public class ActivityTest extends BaseTest {
 
         }
     }
-
+    //FIXME Rever teste
     @Test
     void showActivityIsDone(){
         String activityString = facade.showActivity(super.idActivity1);
@@ -178,6 +178,11 @@ public class ActivityTest extends BaseTest {
         catch (IllegalArgumentException e){
             assertEquals("Invalid ID", e.getMessage());
         }
+
+    }
+
+    @Test
+    void changeActivityResponsableIsFailsInvalidCpf(){
 
     }
 
