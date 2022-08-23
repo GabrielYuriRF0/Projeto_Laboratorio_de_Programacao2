@@ -2,9 +2,7 @@ package com.sapo.activity;
 
 import com.sapo.person.Person;
 import com.sapo.person.PersonRepository;
-import com.sapo.tasks.Task;
-import com.sapo.tasks.TaskRepository;
-import com.sapo.tasks.TaskService;
+import com.sapo.tasks.*;
 
 import java.util.*;
 
@@ -16,6 +14,7 @@ public class Activity {
     private String status;
     private String id;
     private TaskRepository tasks;
+    private ManageTaskRepository manageTasks;
 
     public Activity(String name, String description, String cpf){
         this.name = name;
@@ -23,6 +22,7 @@ public class Activity {
         this.cpf = cpf;
         this.status = "STARTED";
         this.tasks = new TaskRepository();
+        this.manageTasks = new ManageTaskRepository();
     }
 
     public void generateId(int size){
