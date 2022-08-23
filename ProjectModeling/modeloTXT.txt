@@ -5,6 +5,8 @@ composes Commentary
 - name:str
 - skills:str[]
 - Comments:Array<Commentary>
+- level:float
+- function:str
 ---
 + Person(cpf:str, name:str, skills:str[])
 + Person(cpf:str, name:str)
@@ -15,7 +17,30 @@ composes Commentary
 + showComments():str
 + getCpf():str
 + getName():str
++ getSkills():str[]
++ calculateLevel():int //Override
 ---
+
+Teacher
+extends Person
+---
+- siape:str
+- disciplines:str[]
+---
++ Teacher(cpf:str, name:str, siape:str, disciplines:str[], skills:str[])
++ toString():str //Override
+---
+
+Student
+extends Person
+---
+- registration:str
+- period:int
+---
++ Student(cpf:Str, name:str, registration:str, period:int, skills:str[])
++ toString():str //Override
+---
+
 
 Commentary
 ---
@@ -43,6 +68,12 @@ aggregates Person
 + showComments(cpf:str):str
 + getName(cpf:str):str
 + getPerson(cpf:str):Person
++ getFunction():str
++ defineTeacherFunction(cpf:str, siape:str, disciplines:str[]):void
++ defineStudentFuncion(cpf:str, registration:str, period:int):void
++ removerFunction(cpf:str):void
++ getLevel(cpf:str):int
++ listPeople():str[]
 ---
 
 PersonService
@@ -61,6 +92,11 @@ composes PersonRepository
 + getName(cpf:str):str
 + getPerson(cpf:str):Person
 
++ defineTeacherFunction(cpf:str, siape:str, disciplines:str[]):void
++ defineStudentFuncion(cpf:str, registration:str, period:int):void
++ removerFunction(cpf:str):void
++ getLevel(cpf:str):int
++ listPeople():str[]
 ---
 
 
@@ -70,8 +106,18 @@ association PersonValidator
 ---
 - personService: PersonService
 ---
-+ PersonController()
++ PersonController(personService: PersonService)
 + registerPerson(cpf:str, name:str, skills:str[]):void
+
++ registerTeacher(cpf:str, name:str, siape:str, disciplines:str[], skills:str[]):void
+
++ registerStudent(cpf:str, name:str, registration:str, period:int, skills:str[]):void
+
++ defineTeacherFunction(cpf:str, siape:str, disciplines:str[]):void
++ defineStudentFuncion(cpf:str, registration:str, period:int):void
++ removerFunction(cpf:str):void
++ getLevel(cpf:str):int
++ listPeople():str[]
 + removePerson(cpf:str):void
 + showPerson(cpf:str):str
 + changeName(cpf:str, newName:str):void
@@ -84,6 +130,7 @@ association PersonValidator
 ---
 
 Activity
+composes TaskRepository
 ---
 - name:str
 - description:str
@@ -147,7 +194,7 @@ composes ActivityService
 - activityService: ActivityService
 - personService: PersonService
 ---
-+ ActivityController()
++ ActivityController(activityService: ActivityService)
 + registerActivity(name:str, description:str, cpf:str):void
 + concludeActivity(idActivity:str):void
 + disableActivity(idActivity:str):void
@@ -177,6 +224,7 @@ Task
 + toString():str
 + addPersonTask(cpf:str):void
 + removePersonTask(cpf:str):void
++ getTime():int
 ---
 
 TaskRepository
@@ -260,10 +308,14 @@ Facade
 composes PersonController
 composes ActivityController
 composes TaskController
+composes SearchController
+composes ManageTaskController
 ---
 - personController:PersonController
 - activityController:ActivityController
 - taskController:TaskController
+- searchController: SearchController
+- manageTaskController:ManageTaskController
 ---
 + Facade()
 
@@ -277,6 +329,16 @@ composes TaskController
 + showComments(cpf:str):str
 + getPersonName(cpf:str):str
 + getPerson(cpf:str):Person
+
++ registerTeacher(cpf:str, name:str, siape:str, disciplines:str[], skills:str[]):void
+
++ registerStudent(cpf:str, name:str, registration:str, period:int, skills:str[]):void
+
++ defineTeacherFunction(cpf:str, siape:str, disciplines:str[]):void
++ defineStudentFuncion(cpf:str, registration:str, period:int):void
++ removerFunction(cpf:str):void
++ getLevel(cpf:str):int
++ listPeople():str[]
 
 //Referente a Activity
 + registerActivity(name:str, description:str, cpf:str):void
@@ -301,7 +363,146 @@ composes TaskController
 + addPersonTask(cpf:str,idTask:str):void
 + removerPersonTask(cpf:str, idTask:str):void
 + getTask(idTask:str):Task
+
+//Referente a ManageTask
++ registerManageTask(idActivity:str, name:str, skills:str[], idTasks:str[]):str
++ addInManageTask(idManageTask:str, idTask:str):void
++ removeTask(idManageTask:str, idTask:str):void
++ countTasksInManage(idManageTask:str):int
+
+
+//Referente a Search
++ searchPerson(terms:str):str[]
++ searchActivity(terms:str):str[]
++ searchTask(name:str):str[] // Retornar toString de cada tarefa com esse nome
++ searchTask(idActivity:str, name:str):str[]
++ sugestTasks(cpf:str):str[]
++ recentSearch(searchNumbers:int):str[] // Retornar conteúdo das buscas
++ showSearchHistoric(SearchId:int):str[] // Retornar tipo e conteúdo das buscas
+
 ---
+
+SearchController
+composes SearchService
+---
+- searchService:SearchService
+---
++ SearchController(searchService:SearchService)
++ searchPerson(terms:str):str[]
++ searchActivity(terms:str):str[]
++ searchTask(name:str):str[] // Retornar toString de cada tarefa com esse nome
++ searchTask(idActivity:str, name:str):str[]
++ sugestTasks(cpf:str):str[]
++ recentSearch(searchNumbers:int):str[] // Retornar conteúdo das buscas
++ showSearchHistoric(SearchId:int):str[] // Retornar tipo e conteúdo das buscas
+---
+
+SearchService
+composes SearchRepository
+association PersonService
+association ActivityService
+association TaskService
+---
+- searchRepository: SearchRepository
+- personService: PersonService
+- activityService: ActivityService
+- taskService: TaskService
+---
++ SearchService(searchRepository: SearchRepository,  personService: PersonService,activityService: ActivityService,taskService: TaskService)
+
+// A cada busca, criar um objeto do tipo busca e armazenar no histórico
+
++ searchPerson(terms:str[]):str[]
++ searchActivity(terms:str[]):str[]
++ searchTask(name:str):str[] // Retornar toString de cada tarefa com esse nome
++ searchTask(idActivity:str, name:str):str[]
++ sugestTasks(cpf:str):str[]
++ recentSearch(searchNumbers:int):str[] // Retornar conteúdo das buscas
++ showSearchHistoric(SearchId:int):str[] // Retornar tipo e conteúdo das buscas
+---
+
+Search
+---
+- type:str
+- content:str[]
+---
++ Search(type:str, content:str[])
++ getTypeandContent():str[]
++ getContent():str[]
+---
+
+SearchRepository
+aggregates Search
+---
+- searchs:ArrayList<Search>
+---
++ SearchRepository()
++ registerSearch(search:Search):void
++ recentSearch(searchNumbers:int):str[] // Retornar conteúdo das buscas
++ showSearchHistoric(SearchId:int):str[] // Retornar tipo e conteúdo das buscas
+---
+
+ManageTask
+aggregates Task
+---
+- idManageTask:str
+- name:str
+- status:str
+- hours:int
+- skills: HashSet<String>
+- team: Map<String, String> //Cpf e nome
+- tasks: Map<String, Task> //idtask e task
+---
++ ManageTask(name:str, skills:str[])
++ registerTask(task:Task):void
++ removeTask(idTask:str):void
++ registerHours(newHours:int):void
++ removerHours(newHours:int):void
++ toString():str
++ setStatus(newStatus:str):void
++ setTeam():void //Concatena acessando o mapa de tasks
++ countTasksInManage(idManageTask:str):int
+---
+
+ManageTaskRepository
+aggregates ManageTask
+---
+- manageTasks: Map<String, ManageTask>
+---
++ ManageTaskRepository()
++ registerManageTask(manageTask:ManageTask):str
++ addInManageTask(idManageTask:str, task:Task):void
++ removeTask(idManageTask:str, idTask:str):void
++ countTasksInManage(idManageTask:str):int
+---
+
+ManageService
+composes ActivityService
+---
+- activityService:ActivityService
+---
++ ManageService(activityService:ActivityService)
++ registerManageTask(idActivity:str, name:str, skills:str[], idTasks:str[]):str
++ addInManageTask(idManageTask:str, idTask:str):void
++ removeTask(idManageTask:str, idTask:str):void
++ countTasksInManage(idManageTask:str):int
+---
+
+ManageController
+composes ManageService
+---
+- manageService:ManageService
+---
++ ManageController(manageService:ManageService)
++ registerManageTask(idActivity:str, name:str, skills:str[], idTasks:str[]):str
++ addInManageTask(idManageTask:str, idTask:str):void
++ removeTask(idManageTask:str, idTask:str):void
++ countTasksInManage(idManageTask:str):int
+---
+
+
+
+
 
 
 
