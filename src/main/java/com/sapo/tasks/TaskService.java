@@ -96,6 +96,13 @@ public class TaskService {
         tasks.removePersonTask(idTask,cpf);
     }
 
+    public Task getTask(String idTask){
+        String[] idActivityArray = idTask.split("-");
+        String idActivity = idActivityArray[0] + "-" + idActivityArray[1];
+        Activity ac = this.activityService.recoverActivity(idActivity);
+        TaskRepository tasks = ac.getTasks();
+        return tasks.getTask(idTask);
+    }
 
 
 }

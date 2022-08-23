@@ -69,6 +69,11 @@ public class TaskController {
         this.removePersonTask(cpf,idTask);
     }
 
+    public Task getTask(String idTask){
+        taskValidator.validateGeneralString(idTask);
+        return this.taskService.getTask(idTask);
+    }
+
 
 
 }

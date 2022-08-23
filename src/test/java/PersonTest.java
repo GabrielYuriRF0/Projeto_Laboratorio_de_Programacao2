@@ -3,9 +3,15 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 public class PersonTest extends BaseTest{
     @Test
-    void testeCadastroPessoa(){
+    void testeCadastroPessoaValido(){
         var person = facade.getPerson(cpf1);
         assertEquals(cpf1, person.getCpf());
+    }
+    @Test
+    void testeCadastraPessoaVálidaName(){
+        facade.registerPerson(cpf1, "jubileu", skills1);
+        var pessoa = facade.getPerson(cpf1);
+        assertEquals("jubileu", pessoa.getName());
     }
     @Test
     void testeCadastraPessoaCpfInválidoVazio(){
@@ -59,4 +65,20 @@ public class PersonTest extends BaseTest{
             assertEquals("Null", e.getMessage());
         }
     }
+    @Test
+    void testeCadastraPessoaSkillsInválidas(){
+        String[] skill = null;
+        try{
+            facade.registerPerson(cpf1, "jubileu", skills1);
+        }catch (IllegalArgumentException e){
+            assertEquals("Empty or null attribute!", e.getMessage());
+        }
+
+    }
+
+    @Test
+    void removePerson(){
+
+    }
+
 }

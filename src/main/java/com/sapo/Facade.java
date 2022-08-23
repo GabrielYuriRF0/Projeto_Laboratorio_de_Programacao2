@@ -134,5 +134,8 @@ public class Facade {
         this.taskController.removePersonTask(cpf, idTask);
     }
 
+    public Task getTask(String idTask){
+        return this.taskController.getTask(idTask);
+    }
 
 }
