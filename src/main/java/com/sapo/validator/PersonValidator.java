@@ -19,9 +19,5 @@ public class PersonValidator extends Validator  {
         //FIXME rever implementacao;
         CPFValidator cpfValidator = new CPFValidator();
         cpfValidator.assertValid(cpf);
-        List<ValidationMessage> erros = cpfValidator.invalidMessagesFor(cpf);
-        if(erros.isEmpty() == false){
-            throw new IllegalArgumentException("Invalid cpf!");
-        }
     }
 }
