@@ -15,6 +15,7 @@ public class Person{
         this.cpf = cpf;
         this.name = name;
         this.skills = skills;
+        this.comments = new ArrayList<>();
     }
 
     @Override
