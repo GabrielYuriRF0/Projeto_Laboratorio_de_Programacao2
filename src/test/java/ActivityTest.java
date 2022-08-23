@@ -122,4 +122,64 @@ public class ActivityTest extends BaseTest {
 
         }
     }
+
+    @Test
+    void showActivityIsDone(){
+        String activityString = facade.showActivity(super.idActivity1);
+        System.out.println(activityString);
+    }
+
+    @Test
+    void changeActivityDescriptionIsDone(){
+        facade.changeDescription(idActivity1,"Ler Harry Potter");
+        assertEquals("Ler Harry Potter", facade.getActivity(idActivity1).getDescription());
+    }
+
+    @Test
+    void changeActivityDescriptionFailInvalidId(){
+        try{
+            facade.changeDescription("InvalidId","Ler Harry Potter");
+        }
+        catch (IllegalArgumentException e){
+            assertEquals("Invalid ID", e.getMessage());
+        }
+    }
+    @Test
+    void changeActivityDescriptionFailInexistentId(){
+        try{
+            facade.changeDescription("STD-2","Ler Harry Potter");
+        }
+        catch (NoSuchElementException e){
+            assertEquals("Activity do not registered in the repository", e.getMessage());
+        }
+    }
+
+    @Test
+    void changeActivityDescriptionFailInvalidDescription(){
+        try{
+            facade.changeDescription(super.idActivity1," ");
+        }
+        catch (IllegalArgumentException e){
+            assertEquals("Empty or null attribute!", e.getMessage());
+        }
+    }
+
+    @Test
+    void changeActivityResponsableIsDone(){
+        facade.changeResponsable(super.idActivity1,super.cpf1);
+        assertEquals("Gabriel",facade.getActivity(super.idActivity1).getResponsableName());
+    }
+
+    @Test
+    void changeActivityResponsableIsFailsInvalidID(){
+        try{
+            facade.changeResponsable("Invalid ID",super.cpf1);
+        }
+        catch (IllegalArgumentException e){
+            assertEquals("Invalid ID", e.getMessage());
+        }
+
+    }
+
+
 }
