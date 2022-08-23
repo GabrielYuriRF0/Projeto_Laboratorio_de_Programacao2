@@ -1,5 +1,8 @@
 import com.sapo.person.Person;
 import org.junit.jupiter.api.Test;
+
+import java.util.NoSuchElementException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 public class PersonTest extends BaseTest{
     @Test
@@ -77,8 +80,40 @@ public class PersonTest extends BaseTest{
     }
 
     @Test
-    void removePerson(){
+    void testeRemovePerson(){
+        facade.removePerson(cpf1);
+        try{
+            facade.getPerson(cpf1);
+        }catch(NoSuchElementException e){
+            assertEquals("This cpf is not registered in the system!", e.getMessage());
+        }
+    }
 
+    @Test
+    void testRemovePersonCpfInválido(){
+        try{
+            facade.removePerson("111.111.111-11");
+        }catch(Exception e){
+            assertEquals("Validation errors: [CPFError : REPEATED DIGITS]", e.getMessage());
+        }
+    }
+
+    @Test
+    void testRemovePersonCpfVálidoNaoExiste(){
+        try{
+            facade.removePerson("876.178.004-95");
+        }catch(NoSuchElementException e){
+            assertEquals("This cpf is not registered in the system!", e.getMessage());
+        }
+    }
+
+    @Test
+    void testShowPerson(){
+        String show = facade.showPerson(cpf1);
+        var pessoa = facade.getPerson(cpf1);
+        String show1 = pessoa.toString();
+        System.out.println(show1);
+        assertEquals(show1, show);
     }
 
 }

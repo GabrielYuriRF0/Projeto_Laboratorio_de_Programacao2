@@ -27,7 +27,7 @@ class BaseTest {
     @BeforeEach
     void setUp(){
         this.facade = new Facade();
-        facade.registerPerson(cpf1,name1, skills1);
+        facade.registerPerson(cpf1,name1,skills1);
         facade.registerPerson(cpf2,name2,skills2);
          idActivity1 = facade.registerActivity("Ler","Ler senhor dos anéis",cpf2);
         activity1 = facade.getActivity(idActivity1);
