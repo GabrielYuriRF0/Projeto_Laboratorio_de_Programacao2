@@ -27,8 +27,8 @@ public class PersonService {
         this.personRepository.setPersonSkills(cpf, newSkills);
     }
 
-    public void registerComments(String cpf, Commentary commentary){
-        this.registerComments(cpf, commentary);
+    public void registerComments(String cpf, String commentary, String authorCpf){
+        this.personRepository.registerComments(cpf, commentary, authorCpf);
     }
 
     public String showComments(String cpf){

@@ -41,9 +41,10 @@ public class PersonController {
         this.personService.setPersonSkills(cpf, newSkills);
     }
 
-    public void registerComments(String cpf, Commentary commentary){
+    public void registerComments(String cpf, String commentary, String authorCpf){
         personValidator.cpfValidator(cpf);
-        this.personService.registerComments(cpf, commentary);
+        personValidator.cpfValidator(authorCpf);
+        this.personService.registerComments(cpf, commentary, authorCpf);
     }
 
     public String showComments(String cpf){

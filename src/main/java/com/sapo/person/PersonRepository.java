@@ -35,9 +35,11 @@ public class PersonRepository {
         this.people.get(cpf).setSkills(newSkills);
     }
 
-    public void registerComments(String cpf, Commentary commentary){
+    public void registerComments(String cpf, String commentary, String authorCpf){
         checkRegistration(cpf);
-        this.people.get(cpf).registerCommentary(commentary);
+        checkRegistration(authorCpf);
+        String authorName = people.get(authorCpf).getName();
+        this.people.get(cpf).registerCommentary(new Commentary(commentary, authorName));
     }
 
     public String showComments(String cpf){

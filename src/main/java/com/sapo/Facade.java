@@ -47,8 +47,8 @@ public class Facade {
         this.personController.setPersonSkills(cpf, newSkills);
     }
 
-    public void registerComments(String cpf, Commentary commentary){
-        this.personController.registerComments(cpf, commentary);
+    public void registerComments(String cpf, String commentary, String authorCpf){
+        this.personController.registerComments(cpf ,commentary, authorCpf);
     }
 
     public String showComments(String cpf){

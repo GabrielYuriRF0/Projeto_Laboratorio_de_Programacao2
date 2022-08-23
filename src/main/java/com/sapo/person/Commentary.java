@@ -5,16 +5,16 @@ import java.util.Date;
 public class Commentary {
     private final Date CURRENTDATE = new Date();
     private  String description;
-    private String author;
+    private String authorName;
 
     public Commentary(String description, String author){
         this.description = description;
-        this.author = author;
+        this.authorName = author;
     }
 
     @Override
     public String toString(){
-        return "-" + this.description + "(" + this.author + ")";
+        return "-" + this.description + "(" + this.authorName + ")";
     }
 
 
