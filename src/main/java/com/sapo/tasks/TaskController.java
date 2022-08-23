@@ -66,7 +66,7 @@ public class TaskController {
     public void removePersonTask(String cpf, String idTask){
         taskValidator.validateGeneralString(idTask);
         taskValidator.validateGeneralString(cpf);
-        this.removePersonTask(cpf,idTask);
+        this.taskService.removePersonTask(cpf,idTask);
     }
 
     public Task getTask(String idTask){
