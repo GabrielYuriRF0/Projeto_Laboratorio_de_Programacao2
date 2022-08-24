@@ -6,11 +6,11 @@
 ## Responsabilidades
 
 ### Desenvolvimento
-- Gabriel Yuri Ramalho Ferreira - Parte 1: Pessoas
-- Lucas Emmanuel de Sousa Alves - Parte 3: Tarefas
-- Rafael de Sousa Cavalcante - Parte 2: Atividades
+- Gabriel Yuri Ramalho Ferreira - Parte 1 e 6: Pessoas e Tarefas Gerenciais.
+- Lucas Emmanuel de Sousa Alves - Parte 3 e 4: Tarefas e Buscas.
+- Rafael de Sousa Cavalcante - Parte 2 e 5: Atividades e Funções.
 
 ### Testes
-- Gabriel Yuri Ramalho Ferreira - Parte 2: Atividades
-- Lucas Emmanuel de Sousa Alves - Parte 1: Pessoas
-- Rafael de Sousa Cavalcante - Parte 3: Tarefas
+- Gabriel Yuri Ramalho Ferreira - Parte 2 e 5: Atividades e Buscas.
+- Lucas Emmanuel de Sousa Alves - Parte 1 e 5: Pessoas e Funções.
+- Rafael de Sousa Cavalcante - Parte 3 e 6: Tarefas e Tarefas Gerenciais.
