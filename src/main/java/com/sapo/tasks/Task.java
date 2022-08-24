@@ -117,6 +117,6 @@ public class Task{
     }
 
     public Map<String, String> getTeam() {
-        return team;
+        return this.team;
     }
 }

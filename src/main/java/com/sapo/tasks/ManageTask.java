@@ -10,16 +10,18 @@ public class ManageTask {
     private String status;
     private int hours;
     private HashSet<String> skills;
-    private String[] team;
+    private HashSet<String> team;
     private Map<String, Task> tasks;
+    private String idActivity;
 
-    //FIXME Implementar a geração do team.
-    public ManageTask(String name, HashSet<String> skills, int hours, String[] team){
+    public ManageTask(String name, HashSet<String> skills, int hours,  HashSet<String> team, String idActivity ){
         this.name = name;
         this.skills = skills;
         this.hours = hours;
-        this.status = "STARTED";
         this.team = team;
+        this.idActivity = idActivity;
+        this.status = "STARTED";
+
         this.tasks = new HashMap<>();
     }
 
@@ -69,5 +71,9 @@ public class ManageTask {
 
     public String getId(){
         return this.id;
+    }
+
+    public String getIdActivity(){
+        return this.idActivity;
     }
 }
