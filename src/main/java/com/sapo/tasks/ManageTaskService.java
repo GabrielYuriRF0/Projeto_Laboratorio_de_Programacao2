@@ -95,7 +95,7 @@ public class ManageTaskService {
         manageTaskRepository.removeTask(idManageTask,task);
     }
 
-    //FIXME Rever implementação
+
     public int countTasksInManage(String idManageTask){
         String[] idActivityArray = idManageTask.split("-");
         String idActivity = idActivityArray[0] + "-" + idActivityArray[1];

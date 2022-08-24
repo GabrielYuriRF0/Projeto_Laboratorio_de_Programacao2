@@ -1,10 +1,16 @@
 package com.sapo.tasks;
 
-public class ManageTaskController {
-    private ManageTaskService manageTaskService;
+import com.sapo.validator.ActivityValidator;
 
+import javax.xml.validation.Validator;
+
+public class ManageTaskController {
+    private ActivityValidator activityValidator;
+    private ManageTaskService manageTaskService;
+    private Validator validator;
     public ManageTaskController(ManageTaskService manageTaskService){
         this.manageTaskService = manageTaskService;
+        this.activityValidator = new ActivityValidator();
     }
 
     public String registerManageTask(String idActivity, String name,  String[] idsTasks){
