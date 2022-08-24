@@ -7,8 +7,8 @@ public class ManageTaskController {
         this.manageTaskService = manageTaskService;
     }
 
-    public String registerManageTask(String idActivity, String name, String[] skills, String[] idsTasks){
-        return manageTaskService.registerManageTask(idActivity,name,skills,idsTasks);
+    public String registerManageTask(String idActivity, String name,  String[] idsTasks){
+        return manageTaskService.registerManageTask(idActivity,name,idsTasks);
 
     }
 

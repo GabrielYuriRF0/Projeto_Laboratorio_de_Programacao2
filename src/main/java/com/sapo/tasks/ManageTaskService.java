@@ -5,10 +5,7 @@ import com.sapo.activity.ActivityService;
 import org.apache.commons.lang3.ArrayUtils;
 
 import javax.accessibility.AccessibleAction;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
+import java.util.*;
 
 public class ManageTaskService {
     private ActivityService activityService;
@@ -18,25 +15,40 @@ public class ManageTaskService {
         this.activityService = activityService;
     }
 
-    //FIXME Rever implementação
-    public String registerManageTask(String idActivity, String name, String[] skills, String[] idsTasks){
+    public String registerManageTask(String idActivity, String name, String[] idsTasks){
         int parcialId = activityService.recoverActivity(idActivity).getTasks().quantityTasks();
         String idManageTask = idActivity + "-" + parcialId;
         Activity activity = activityService.recoverActivity(idActivity);
+        TaskRepository taskRepository = activity.getTasks();
+        Map<String,Task> mapTasks = taskRepository.getTasks();
+        var valuesMapTasks = mapTasks.values();
 
-        // Gerar a união referente a todas as habilidades de todas as tarefas contidas na atividade e o tempo total das atividades:
+        // Inserir em um Array todas as tasks que estão em uma atividade e que possuem um dos idsTasks
+        ArrayList<Task> collectionTasks = new ArrayList<>();
+        for(Task actualTask: valuesMapTasks){
+            for(int i = 0; i < idsTasks.length; i++){
+                if(actualTask.getId().equals(idsTasks[i])){
+                    collectionTasks.add(actualTask);
+                    break;
+                }
+            }
+        }
+
+
+
+        // Gerar a união referente a todas as habilidades de todas as tarefas contidas na atividade
+        // e o tempo total das mesmas.
+
         // Também é pego o nome de todas as pessoas responsáveis pela tarefa gerencial
-        Map<String, Task> mapOfTasks = activity.getTasks().getTasks();
-        var listOfTasks = mapOfTasks.values();
         String[] unionOfSkills = new String[0];
         int totalHours = 0;
         String namesofTeam = new String();
 
-        for(Task task: listOfTasks){
+        for(Task task: collectionTasks){
             unionOfSkills = ArrayUtils.addAll(unionOfSkills, task.getSkills());
             totalHours += task.getHour();
-            for(String name1: task.getTeam().values()){
-                namesofTeam += name1 + " ";
+            for(String actualName: task.getTeam().values()){
+                namesofTeam += actualName + " ";
             }
         }
         String[] namesOfTeamSplit = namesofTeam.split(" ");
@@ -54,6 +66,10 @@ public class ManageTaskService {
         }
 
         activity.getmanageTaskRepository().getManageTaskRepository().put(idManageTask, new ManageTask(name, setUnionOfSkills, totalHours, setOfTeam,idActivity));
+        // Adicionar o array de tasks a ManageTask
+        for(int i = 0; i< collectionTasks.size(); i++){
+            activity.getmanageTaskRepository().addInManageTask(idManageTask, collectionTasks.get(i));
+        }
         return idManageTask;
     }
 

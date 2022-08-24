@@ -177,8 +177,8 @@ public class Facade {
     }
 
     // Métodos referentes a ManageTask
-    public String registerManageTask(String idActivity, String name, String[] skills, String[] idsTasks){
-        return this.manageTaskController.registerManageTask(idActivity,name,skills,idsTasks);
+    public String registerManageTask(String idActivity, String name,  String[] idsTasks){
+        return this.manageTaskController.registerManageTask(idActivity,name ,idsTasks);
 
     }
     public void addInManageTask(String idManageTask, String idTask){
