@@ -14,6 +14,9 @@ public class ManageTaskController {
     }
 
     public String registerManageTask(String idActivity, String name,  String[] idsTasks){
+        activityValidator.idValidator(idActivity);
+        activityValidator.validateGeneralString(name);
+        activityValidator.generalValidateStringArray(idsTasks);
         return manageTaskService.registerManageTask(idActivity,name,idsTasks);
 
     }
