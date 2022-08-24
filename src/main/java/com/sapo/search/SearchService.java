@@ -1,5 +1,6 @@
 package com.sapo.search;
 
+import com.sapo.activity.Activity;
 import com.sapo.activity.ActivityService;
 import com.sapo.person.Person;
 import com.sapo.person.PersonService;
@@ -31,10 +32,10 @@ public class SearchService {
                 if(p.getCpf().equals(term)){
                     isHere = true;
                 }
-                if(p.getName().equals(term)){
+                if(p.getName().toUpperCase().equals(term.toUpperCase())){
                     isHere = true;
                 }
-                if(Arrays.asList(p.getSkills()).contains(term)){
+                if(Arrays.asList(p.getSkills()).contains(term.toLowerCase()) || Arrays.asList(p.getSkills()).contains(term.toUpperCase())){
                     isHere = true;
                 }
                 if(isHere == true){
@@ -56,8 +57,36 @@ public class SearchService {
         }
     }
 
-    public List<String> searchActivity(List<String> terms){
-
+    public List<String> searchActivity(String[] terms){
+        List<String> activityStringList = new ArrayList<>();
+        Map<String, Activity> activityMap = this.activityService.getActivities();
+        for(Activity a : activityMap.values()){
+            String[] idActivitySplit = a.getId().split("-");
+            for(String term : terms){
+                boolean isHere = false;
+                if(a.getName().equalsIgnoreCase(term)){
+                    isHere = true;
+                }
+                if(a.getDescription().toUpperCase().contains(term.toUpperCase())){
+                    isHere = true;
+                }
+                if(idActivitySplit[0].equalsIgnoreCase(term)){
+                    isHere = true;
+                }
+                if(idActivitySplit[1].equalsIgnoreCase(term)){
+                    isHere = true;
+                }
+                if(a.toString().equalsIgnoreCase(term)){
+                    isHere = true;
+                }
+                if(isHere == true){
+                    activityStringList.add(a.toString());
+                    break;
+                }
+            }
+        }
+        this.searchRepository.registerSearch(new Search("ACTIVITY", activityStringList));
+        return activityStringList;
     }
 
     public List<String> searchTask(String name){ // Retornar toString de cada tarefa com esse nome

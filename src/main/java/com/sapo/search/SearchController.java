@@ -16,7 +16,8 @@ public class SearchController {
     }
 
     public List<String> searchActivity(String terms){
-
+        String[] termos = terms.split(" ");
+        return this.searchService.searchActivity(termos);
     }
 
     public List<String> searchTask(String name){
