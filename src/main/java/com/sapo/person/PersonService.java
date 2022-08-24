@@ -11,11 +11,10 @@ import java.util.Map;
 
 public class PersonService {
     private PersonRepository personRepository;
-    private ActivityService activityService;
 
-    public PersonService(ActivityService activityService){
+
+    public PersonService(){
         this.personRepository = new PersonRepository();
-        this.activityService = activityService;
     }
 
     public void registerPerson(Person person){
