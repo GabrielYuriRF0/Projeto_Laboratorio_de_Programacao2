@@ -91,24 +91,43 @@ public class SearchService {
         return activityStringList;
     }
 
-    /*public List<String> searchTask(String name){ // Retornar toString de cada tarefa com esse nome
-        List<String> TaskStringList = new ArrayList<>();
+    public List<String> searchTask(String name){ // Retornar toString de cada tarefa com esse nome
+        List<String> taskStringList = new ArrayList<>();
         Map<String, Activity> activityMap = this.activityService.getActivities();
         for(Activity a : activityMap.values()){
             TaskRepository tasks = a.getTasks();
-            Map<String, Task>  tasksa
-            for()
+            Map<String, Task> tasksActivity = tasks.getTasks();
+            for(Task t : tasksActivity.values()){
+                if(t.getName().equalsIgnoreCase(name)){
+                    taskStringList.add(t.toString());
+                }
+            }
         }
+        this.searchRepository.registerSearch(new Search("TASK", taskStringList));
+        return taskStringList;
 
     }
 
     public List<String> searchTask(String idActivity, String name){
+        List<String> taskStringList = new ArrayList<>();
+        Activity ac = this.activityService.recoverActivity(idActivity);
+        TaskRepository tasks = ac.getTasks();
+        Map<String, Task> tasksActivity = tasks.getTasks();
+
+        for(Task t : tasksActivity.values()){
+            if(t.getName().equalsIgnoreCase(name)){
+                taskStringList.add(t.toString());
+            }
+        }
+
+        this.searchRepository.registerSearch(new Search("TASK", taskStringList));
+        return taskStringList;
 
     }
 
-    public List<String> sugestTasks(String cpf){
+    //public List<String> sugestTasks(String cpf){
 
-    }*/
+    //}
 
     public List<String> recentSearch(int searchNumbers){
         return this.searchRepository.recentSearch(searchNumbers);

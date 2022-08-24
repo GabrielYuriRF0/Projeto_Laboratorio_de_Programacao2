@@ -20,18 +20,15 @@ public class SearchController {
         return this.searchService.searchActivity(termos);
     }
 
-    /*public List<String> searchTask(String name){
+    public List<String> searchTask(String name){
         return this.searchService.searchTask(name);
     }
 
     public List<String> searchTask(String idActivity, String name){
-
+        return this.searchService.searchTask(idActivity,name);
     }
 
-    public List<String> sugestTasks(String cpf){
 
-    }
-    */
     public List<String> recentSearch(int searchNumbers){
         return this.searchService.recentSearch(searchNumbers);
     }
