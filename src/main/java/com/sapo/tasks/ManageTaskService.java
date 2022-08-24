@@ -18,6 +18,7 @@ public class ManageTaskService {
         this.activityService = activityService;
     }
 
+    //FIXME Rever implementação
     public String registerManageTask(String idActivity, String name, String[] skills, String[] idsTasks){
         int parcialId = activityService.recoverActivity(idActivity).getTasks().quantityTasks();
         String idManageTask = idActivity + "-" + parcialId;
@@ -78,6 +79,7 @@ public class ManageTaskService {
         manageTaskRepository.removeTask(idManageTask,task);
     }
 
+    //FIXME Rever implementação
     public int countTasksInManage(String idManageTask){
         String[] idActivityArray = idManageTask.split("-");
         String idActivity = idActivityArray[0] + "-" + idActivityArray[1];

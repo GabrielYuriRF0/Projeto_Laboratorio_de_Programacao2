@@ -9,10 +9,7 @@ import com.sapo.person.PersonController;
 import com.sapo.person.PersonService;
 import com.sapo.search.SearchController;
 import com.sapo.search.SearchService;
-import com.sapo.tasks.ManageTaskService;
-import com.sapo.tasks.Task;
-import com.sapo.tasks.TaskController;
-import com.sapo.tasks.TaskService;
+import com.sapo.tasks.*;
 
 import java.util.List;
 
@@ -177,5 +174,22 @@ public class Facade {
 
     public List<String> showSearchHistoric(int searchId){
         return this.searchController.showSearchHistoric(searchId);
+    }
+
+    // Métodos referentes a ManageTask
+    public String registerManageTask(String idActivity, String name, String[] skills, String[] idsTasks){
+        return this.manageTaskController.registerManageTask(idActivity,name,skills,idsTasks);
+
+    }
+    public void addInManageTask(String idManageTask, String idTask){
+        this.manageTaskController.addInManageTask(idManageTask,idTask);
+    }
+
+    public void removeTask(String idManageTask, String idTask){
+        this.manageTaskController.removeTask(idManageTask,idTask);
+    }
+
+    public int countTasksInManage(String idManageTask){
+        return this.manageTaskController.countTasksInManage(idManageTask);
     }
 }
