@@ -20,6 +20,7 @@ public class FunctionService {
 
     public void registerTeacher(Teacher teacher){
         this.functionRepository.registerTeacher(teacher);
+
     }
     public void registerStudent(Student student){
         this.functionRepository.registerStudent(student);
@@ -27,13 +28,11 @@ public class FunctionService {
     public void removeFunction(String CPF){
         this.functionRepository.removeFunction(CPF);
     }
-    public String[] listPeople(){
-        Map<String, Person> people = this.personService.getPeople();
-        Map<String, Student> students = this.functionRepository.getStudents();
-        Map<String, Teacher> teacher = this.functionRepository.getTeachers();
-        String[] order = new String[];
-        for()
-    }
+//    public String[] listPeople(){
+//        Map<String, Person> people = this.personService.getPeople();
+//        Map<String, Student> students = this.functionRepository.getStudents();
+//        Map<String, Teacher> teacher = this.functionRepository.getTeachers();
+//    }
 
 //    public void defineTeacherFunction(String cpf, String siape, String[] disciplines){
 //        this.personRepository.defineTeacherFunction(cpf, siape, disciplines);
