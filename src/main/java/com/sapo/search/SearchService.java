@@ -4,6 +4,8 @@ import com.sapo.activity.Activity;
 import com.sapo.activity.ActivityService;
 import com.sapo.person.Person;
 import com.sapo.person.PersonService;
+import com.sapo.tasks.Task;
+import com.sapo.tasks.TaskRepository;
 import com.sapo.tasks.TaskService;
 
 import java.util.*;
@@ -89,7 +91,14 @@ public class SearchService {
         return activityStringList;
     }
 
-    public List<String> searchTask(String name){ // Retornar toString de cada tarefa com esse nome
+    /*public List<String> searchTask(String name){ // Retornar toString de cada tarefa com esse nome
+        List<String> TaskStringList = new ArrayList<>();
+        Map<String, Activity> activityMap = this.activityService.getActivities();
+        for(Activity a : activityMap.values()){
+            TaskRepository tasks = a.getTasks();
+            Map<String, Task>  tasksa
+            for()
+        }
 
     }
 
@@ -99,7 +108,7 @@ public class SearchService {
 
     public List<String> sugestTasks(String cpf){
 
-    }
+    }*/
 
     public List<String> recentSearch(int searchNumbers){
         return this.searchRepository.recentSearch(searchNumbers);

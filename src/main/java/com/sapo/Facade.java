@@ -156,7 +156,7 @@ public class Facade {
         return this.searchController.searchActivity(terms);
     }
 
-    public List<String> searchTask(String name){
+    /*public List<String> searchTask(String name){
         return this.searchController.searchTask(name);
     }
 
@@ -167,7 +167,7 @@ public class Facade {
     public List<String> sugestTasks(String cpf){
         return this.searchController.sugestTasks(cpf);
     }
-
+    */
     public List<String> recentSearch(int searchNumbers){
         return this.searchController.recentSearch(searchNumbers);
     }
