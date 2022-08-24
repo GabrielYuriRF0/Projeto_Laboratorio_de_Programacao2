@@ -75,10 +75,6 @@ public class Person{
         return this.skills;
     }
     public float calculateLevel(){
-        float level = 0;
-        if(this.function.equals("NO FUNCTION")){
-
-        }
         return 0;
     }
 

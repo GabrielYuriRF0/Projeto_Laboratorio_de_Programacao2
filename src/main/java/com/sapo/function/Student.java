@@ -1,9 +1,11 @@
-package com.sapo.person;
+package com.sapo.function;
+
+import com.sapo.person.Person;
 
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-public class Student extends Person{
+public class Student extends Person {
     private String registration;
     private int period;
 
@@ -35,9 +37,6 @@ public class Student extends Person{
 
     @Override
     public float calculateLevel(){
-        if(this.function.equals("NO FUNCTION")){
-
-        }
         return 0;
     }
 }

@@ -1,9 +1,11 @@
-package com.sapo.person;
+package com.sapo.function;
+
+import com.sapo.person.Person;
 
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-public class Teacher extends Person{
+public class Teacher extends Person {
     private String siape;
     private String[] disciplines;
     public Teacher(String cpf, String name, String siape, String[] disciplines, String[] skills) {
@@ -45,5 +47,9 @@ public class Teacher extends Person{
 
         }
         return 0;
+    }
+
+    public String[] getDisciplines() {
+        return disciplines;
     }
 }

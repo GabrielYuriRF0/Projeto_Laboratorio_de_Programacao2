@@ -1,6 +1,8 @@
 package com.sapo.person;
 
 
+import com.sapo.function.Student;
+import com.sapo.function.Teacher;
 import com.sapo.validator.PersonValidator;
 
 public class PersonController {
@@ -17,50 +19,6 @@ public class PersonController {
         personValidator.generalValidate(skills);
         personValidator.cpfValidator(cpf);
         this.personService.registerPerson(new Person(cpf, name, skills));
-    }
-
-    public void registerTeacher(String CPF, String name, String siape, String[] disciplines, String[] skills){
-        personValidator.validateGeneralString(name);
-        personValidator.generalValidate(skills);
-        personValidator.cpfValidator(CPF);
-        personValidator.validateGeneralString(siape);
-        personValidator.generalValidate(disciplines);
-        this.personService.registerPerson(new Teacher(CPF, name, siape, disciplines, skills));
-    }
-    public void registerStudent(String CPF, String name, String registration, int period, String[] skills){
-        personValidator.validateGeneralString(name);
-        personValidator.generalValidate(skills);
-        personValidator.cpfValidator(CPF);
-        personValidator.validateGeneralString(registration);
-        personValidator.periodValidator(period);
-        this.personService.registerPerson(new Student(CPF, name, registration, period, skills));
-    }
-
-    public void defineTeacherFunction(String CPF, String siape, String[] disciplines){
-        personValidator.cpfValidator(CPF);
-        personValidator.validateGeneralString(siape);
-        personValidator.generalValidate(disciplines);
-        this.personService.defineTeacherFunction(CPF, siape, disciplines);
-    }
-
-    public void defineStudentFunction(String CPF, String registration, int period){
-        personValidator.cpfValidator(CPF);
-        personValidator.validateGeneralString(registration);
-        personValidator.periodValidator(period);
-        this.personService.defineStudentFunction(CPF, registration, period);
-    }
-
-    public float getLevel(String CPF){
-        personValidator.cpfValidator(CPF);
-        return this.personService.getLevel(CPF);
-    }
-    public String[] listPeople(){
-        return this.personService.listPeople();
-    }
-
-    public void removeFunction(String CPF){
-        personValidator.cpfValidator(CPF);
-        this.personService.removeFunction(CPF);
     }
     public void removePerson(String cpf){
         personValidator.cpfValidator(cpf);
