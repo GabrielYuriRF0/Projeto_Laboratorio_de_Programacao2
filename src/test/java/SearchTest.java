@@ -13,8 +13,15 @@ public class SearchTest extends  BaseTest {
         ArrayList<String> searchResult =new ArrayList<>();
         searchResult.add("Gabriel");
         assertEquals(searchResult.get(0), facade.searchPerson("Gabriel").get(0));
-
     }
+
+    @Test
+    void searchActivityIsDone(){
+        ArrayList<String> searchResult = new ArrayList<>();
+        String searchString =  "["+facade.getActivity(super.idActivity1).toString() + "]";
+        assertEquals(searchString,facade.searchActivity("Ler"));
+    }
+
 
 
 
